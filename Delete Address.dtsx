@@ -1,0 +1,3311 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2020 9:25:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E54614"
+  DTS:CreatorName="UOFI\nhadi"
+  DTS:DTSID="{9A1EB8A2-06CF-4600-824E-05BA9BCE0E4F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Delete Address"
+  DTS:PackageType="5"
+  DTS:VersionBuild="48"
+  DTS:VersionGUID="{C829D998-9230-4428-A116-F26642B48D2E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Address object"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E5631F56-2E2A-4CDC-BB34-E3D66149354F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Address object"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DELETE Address object\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Address object\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[AccountID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[ErrorMessage]"
+                      cachedDataType="nText"
+                      cachedName="ErrorMessage"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Key_1"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Key_1_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[RecordTypeID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="RecordTypeID"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Results]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Types]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Types"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Current_Delete_New]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete_New"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Address object\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Address object\Premium ADO NET Destination 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Address object\Premium ADO NET Destination 1.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[AccountID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Key_1]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Key_1"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Key_1_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Key_1_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[RecordTypeID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="RecordTypeID"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Results]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Types]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Types"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Types]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[ErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="ErrorMessage"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]" />
+                    <inputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Current_Delete_New]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete_New"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Address object\Premium ADO NET Destination 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Address object\Premium ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Read data from an ADO.NET connection."
+              name="Premium ADO NET Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DataSource">&lt;&lt;Custom Command&gt;&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="Command">SELECT [AccountID]
+      ,[Create_Datetime]
+      ,[Current_Delete]
+      ,[Delete_LogID]
+      ,[ErrorMessage]
+      ,[Key_1]
+      ,[Key_1_Name]
+      ,[Key_1_SF_Name]
+      ,[Object_SF_Name]
+      ,[RecordTypeID]
+      ,[Results]
+      ,[SalesforceID]
+      ,[Types]
+FROM [dbo].[Delete_Logs]
+WHERE Create_Datetime &gt; '1/1/2050'
+--WHERE object_sf_name='hed__Address__c' and Current_Delete=1</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="PrepareCommand">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetSourceComponent</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Address object\Premium ADO NET Source.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output]"
+                  name="Default Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[AccountID]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]"
+                      name="AccountID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      name="Create_Datetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      name="Current_Delete"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      name="Delete_LogID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]"
+                      name="ErrorMessage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]"
+                      name="Key_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_Name]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]"
+                      name="Key_1_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_SF_Name]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]"
+                      name="Key_1_SF_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[RecordTypeID]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]"
+                      name="RecordTypeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Results]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      name="SalesforceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Types]"
+                      length="100"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]"
+                      name="Types"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[AccountID]"
+                      dataType="wstr"
+                      length="100"
+                      name="AccountID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[ErrorMessage]"
+                      dataType="nText"
+                      name="ErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1]"
+                      dataType="wstr"
+                      length="100"
+                      name="Key_1" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Key_1_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_SF_Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Key_1_SF_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Object_SF_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[RecordTypeID]"
+                      dataType="wstr"
+                      length="100"
+                      name="RecordTypeID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Results]"
+                      dataType="wstr"
+                      length="100"
+                      name="Results" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      dataType="wstr"
+                      length="100"
+                      name="SalesforceID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Types]"
+                      dataType="wstr"
+                      length="100"
+                      name="Types" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Address object\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Address object\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Address object\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Address object\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Address object\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Address object\Premium Derived Column.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Address object\Premium Derived Column 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Address object\Premium Derived Column 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Address object\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Address object\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Success hed__Address__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Success hed__Address__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Success"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Success"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Address object\Premium Derived Column 1 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Address object\Premium Derived Column 1 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Address object\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Address object\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="29"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Failed hed__Address__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Failed hed__Address__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"failed"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"failed"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Address object\Salesforce Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Populate data into Salesforce."
+              name="Salesforce Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to Salesforce."
+                  expressionType="Notify"
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationActionType">4</property>
+                <property
+                  dataType="System.String"
+                  description="Destination object to write data."
+                  expressionType="Notify"
+                  name="DestinationObject">hed__Address__c</property>
+                <property
+                  dataType="System.Int32"
+                  description="Batch size"
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the External ID field to be used for Salesforce upsert action."
+                  expressionType="Notify"
+                  name="UpsertExternalIdField"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether you wan to use Salesforce Bulk API to load data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bulk data format to use when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="BulkDataFormat"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.BulkDataFormat">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Concurrency mode when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="ConcurrencyMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.ConcurrencyMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to Salesforce."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When true, datetime values should be sent to Salesforce in UTC format. The default is false, in which case, datetime values will be posted to Salesforce in local system time. "
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to send empty strings as NULLs when writing to Salesforce. When disabled, empty strings will not be converted to NULL value, therefore will not be posted to Salesforce. This can be helpful in the case that you want to retain original values in Salesforce when the incoming value is empty (not NULL though). "
+                  expressionType="Notify"
+                  name="SendEmptyStringsAsNullValues">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to write batch files withUTF-8 encoding when using Bulk API to write to Salesforce."
+                  expressionType="Notify"
+                  name="WriteBatchFilesWithUtf8Encoding">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Address object\Salesforce Destination.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Address object\Salesforce Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Inputs[Input].Columns[SalesforceID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Address object\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      lineageId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">hed__Address__c</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Address object\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Address object\Salesforce Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Address object\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\DELETE Address object\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      name="SalesforceRecordId" />
+                    <outputColumn
+                      refId="Package\DELETE Address object\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\DELETE Address object\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DELETE Address object.Paths[Default Output]"
+              endId="Package\DELETE Address object\Premium Derived Column.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Address object\Premium ADO NET Source.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Address object.Paths[Default Output1]"
+              endId="Package\DELETE Address object\Salesforce Destination.Inputs[Input]"
+              name="Default Output"
+              startId="Package\DELETE Address object\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Address object.Paths[Default Output2]"
+              endId="Package\DELETE Address object\Premium Derived Column 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Address object\Salesforce Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Address object.Paths[Default Output3]"
+              endId="Package\DELETE Address object\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Address object\Premium Derived Column 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Address object.Paths[Default Output4]"
+              endId="Package\DELETE Address object\Premium ADO NET Destination 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Address object\Premium Derived Column 1 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Address object.Paths[Error Output]"
+              endId="Package\DELETE Address object\Premium Derived Column 1 1.Inputs[Primary Input]"
+              name="Error Output"
+              startId="Package\DELETE Address object\Salesforce Destination.Outputs[Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{497A36E7-5DD1-4DBB-A7A3-BEA2E7084D41}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[Delete_Logs]&#xA;WHERE [Object_SF_Name] = 'hed__Address__c' and [Current_Delete]=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET ID Address"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{7B3FDC28-7B59-4E5B-B49F-A16B35B50B8F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET ID Address"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GET ID Address\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET ID Address\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="14"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET ID Address\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET ID Address\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\GET ID Address\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET ID Address\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET ID Address\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"hed__Address__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"hed__Address__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output].Columns[Key_1_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="14"
+                      lineageId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output].Columns[Key_1_Name]"
+                      name="Key_1_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"EXT_ADDRESS_ID"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"EXT_ADDRESS_ID"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET ID Address\Salesforce Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="Salesforce Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">hed__Address__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET ID Address\Salesforce Source.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_Indicator__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_Indicator__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_Indicator__c]"
+                      name="Active_Indicator__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      length="18"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      name="CreatedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Address_ID__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Address_ID__c]"
+                      length="20"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Address_ID__c]"
+                      name="EXT_Address_ID__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Address_Type__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Address_Type__c]"
+                      length="4000"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Address_Type__c]"
+                      name="hed__Address_Type__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Default_Address__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Default_Address__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Default_Address__c]"
+                      name="hed__Default_Address__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Formula_MailingAddress__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Formula_MailingAddress__c]"
+                      length="1300"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Formula_MailingAddress__c]"
+                      name="hed__Formula_MailingAddress__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Formula_MailingStreetAddress__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Formula_MailingStreetAddress__c]"
+                      length="1300"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Formula_MailingStreetAddress__c]"
+                      name="hed__Formula_MailingStreetAddress__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Geolocation__Latitude__s]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Geolocation__Latitude__s]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Geolocation__Latitude__s]"
+                      name="hed__Geolocation__Latitude__s"
+                      precision="9"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Geolocation__Longitude__s]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Geolocation__Longitude__s]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Geolocation__Longitude__s]"
+                      name="hed__Geolocation__Longitude__s"
+                      precision="9"
+                      scale="6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Latest_End_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Latest_End_Date__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Latest_End_Date__c]"
+                      name="hed__Latest_End_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Latest_Start_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Latest_Start_Date__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Latest_Start_Date__c]"
+                      name="hed__Latest_Start_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingCity__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingCity__c]"
+                      length="255"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingCity__c]"
+                      name="hed__MailingCity__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingCountry__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingCountry__c]"
+                      length="255"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingCountry__c]"
+                      name="hed__MailingCountry__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingPostalCode__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingPostalCode__c]"
+                      length="255"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingPostalCode__c]"
+                      name="hed__MailingPostalCode__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingState__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingState__c]"
+                      length="255"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingState__c]"
+                      name="hed__MailingState__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingStreet__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingStreet__c]"
+                      length="255"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingStreet__c]"
+                      name="hed__MailingStreet__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingStreet2__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingStreet2__c]"
+                      length="255"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__MailingStreet2__c]"
+                      name="hed__MailingStreet2__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Parent_Account__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Parent_Account__c]"
+                      length="18"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Parent_Account__c]"
+                      name="hed__Parent_Account__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Parent_Contact__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Parent_Contact__c]"
+                      length="18"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Parent_Contact__c]"
+                      name="hed__Parent_Contact__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_End_Day__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_End_Day__c]"
+                      length="4000"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_End_Day__c]"
+                      name="hed__Seasonal_End_Day__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_End_Month__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_End_Month__c]"
+                      length="4000"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_End_Month__c]"
+                      name="hed__Seasonal_End_Month__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_End_Year__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_End_Year__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_End_Year__c]"
+                      name="hed__Seasonal_End_Year__c"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_Start_Day__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_Start_Day__c]"
+                      length="4000"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_Start_Day__c]"
+                      name="hed__Seasonal_Start_Day__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_Start_Month__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_Start_Month__c]"
+                      length="4000"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_Start_Month__c]"
+                      name="hed__Seasonal_Start_Month__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_Start_Year__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_Start_Year__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Seasonal_Start_Year__c]"
+                      name="hed__Seasonal_Start_Year__c"
+                      precision="4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      length="18"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      name="LastModifiedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      name="LastReferencedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      name="LastViewedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      length="18"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]"
+                      name="OwnerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      name="SystemModstamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_End_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_End_Date__c]"
+                      lineageId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_End_Date__c]"
+                      name="Active_End_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_Indicator__c]"
+                      dataType="bool"
+                      name="Active_Indicator__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Address_ID__c]"
+                      dataType="wstr"
+                      length="20"
+                      name="EXT_Address_ID__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Address_Type__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Address_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Default_Address__c]"
+                      dataType="bool"
+                      name="hed__Default_Address__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Formula_MailingAddress__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="hed__Formula_MailingAddress__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Formula_MailingStreetAddress__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="hed__Formula_MailingStreetAddress__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Geolocation__Latitude__s]"
+                      dataType="numeric"
+                      name="hed__Geolocation__Latitude__s"
+                      precision="9"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Geolocation__Longitude__s]"
+                      dataType="numeric"
+                      name="hed__Geolocation__Longitude__s"
+                      precision="9"
+                      scale="6" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Latest_End_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Latest_End_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Latest_Start_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Latest_Start_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingCity__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="hed__MailingCity__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingCountry__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="hed__MailingCountry__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingPostalCode__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="hed__MailingPostalCode__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingState__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="hed__MailingState__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingStreet__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="hed__MailingStreet__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__MailingStreet2__c]"
+                      dataType="wstr"
+                      length="255"
+                      name="hed__MailingStreet2__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Parent_Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Parent_Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Parent_Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Parent_Contact__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_End_Day__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Seasonal_End_Day__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_End_Month__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Seasonal_End_Month__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_End_Year__c]"
+                      dataType="numeric"
+                      name="hed__Seasonal_End_Year__c"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_Start_Day__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Seasonal_Start_Day__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_Start_Month__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Seasonal_Start_Month__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Seasonal_Start_Year__c]"
+                      dataType="numeric"
+                      name="hed__Seasonal_Start_Year__c"
+                      precision="4" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_End_Date__c]"
+                      dataType="dbDate"
+                      name="Active_End_Date__c" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GET ID Address.Paths[Default Output]"
+              endId="Package\GET ID Address\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\GET ID Address\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\GET ID Address.Paths[Salesforce Source Output]"
+              endId="Package\GET ID Address\Premium Derived Column.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\GET ID Address\Salesforce Source.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6586F40D-3E33-4769-905C-C088D3591181}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\GET ID Address" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{CA3AF0E3-55BA-482A-91ED-EB01ED19AA00}"
+      DTS:From="Package\GET ID Address"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DELETE Address object" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="192,42"
+          Id="Package\DELETE Address object"
+          TopLeft="143.5,239.583332649949" />
+        <NodeLayout
+          Size="166.5,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="157.5,53.6249997336417" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\GET ID Address"
+          TopLeft="164,138.458333658882" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="241.125,95.6249997336417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42.8333339252402"
+              Start="0,0"
+              End="0,35.3333339252402">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.3333339252402" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="240.5,180.458333658882">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.124998991067"
+              Start="0,0"
+              End="0,51.624998991067">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.624998991067" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DELETE Address object">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE Address object\Premium ADO NET Destination 1"
+          TopLeft="146.666666666667,540.666666666667" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DELETE Address object\Premium Derived Column"
+          TopLeft="294,237.333333333333" />
+        <NodeLayout
+          Size="206.5,42"
+          Id="Package\DELETE Address object\Premium ADO NET Source"
+          TopLeft="295.076923076923,130.153846153846" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DELETE Address object\Salesforce Destination"
+          TopLeft="298.666666666667,344.666666666667" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\DELETE Address object\Premium Derived Column 1"
+          TopLeft="512.666666666667,452.666666666667" />
+        <NodeLayout
+          Size="216.5,42"
+          Id="Package\DELETE Address object\Premium Derived Column 1 1"
+          TopLeft="146.666666666667,448" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE Address object\Premium ADO NET Destination"
+          TopLeft="502.666666666667,544" />
+        <EdgeLayout
+          Id="Package\DELETE Address object.Paths[Default Output3]"
+          TopLeft="616.166666666667,494.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.333333333333"
+              Start="0,0"
+              End="0,41.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Address object.Paths[Default Output2]"
+          TopLeft="420,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.666666666667,65.9999999999999"
+              Start="0,0"
+              End="196.666666666667,58.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7413793103448"
+                    Point2="0,26.7413793103448"
+                    Point3="4,26.7413793103448" />
+                  <mssgle:LineSegment
+                    End="192.666666666667,26.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.666666666667,26.7413793103448"
+                    Point2="196.666666666667,26.7413793103448"
+                    Point3="196.666666666667,30.7413793103448" />
+                  <mssgle:LineSegment
+                    End="196.666666666667,58.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Address object.Paths[Default Output1]"
+          TopLeft="392.083333333333,279.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.3333333333334"
+              Start="0,0"
+              End="0,57.8333333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.8333333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Address object.Paths[Default Output]"
+          TopLeft="395.913461538461,172.153846153846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.179487179487"
+              Start="0,0"
+              End="0,57.679487179487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.679487179487" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Address object.Paths[Error Output]"
+          TopLeft="361.333333333333,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.416666666667,61.3333333333333"
+              Start="0,0"
+              End="-106.416666666667,53.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8505747126437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8505747126437"
+                    Point2="0,24.8505747126437"
+                    Point3="-4,24.8505747126437" />
+                  <mssgle:LineSegment
+                    End="-102.416666666667,24.8505747126437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.416666666667,24.8505747126437"
+                    Point2="-106.416666666667,24.8505747126437"
+                    Point3="-106.416666666667,28.8505747126437" />
+                  <mssgle:LineSegment
+                    End="-106.416666666667,53.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-81.5447200520835,29.8505747126437,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Address object.Paths[Default Output4]"
+          TopLeft="257.291666666667,490">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.6666666666666"
+              Start="0,0"
+              End="0,43.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\GET ID Address">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.5,42"
+          Id="Package\GET ID Address\Salesforce Source"
+          TopLeft="120.5,80.1666662684745" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\GET ID Address\Premium Derived Column"
+          TopLeft="102,187.958332399734" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\GET ID Address\Premium ADO NET Destination"
+          TopLeft="95,279.499998611708" />
+        <EdgeLayout
+          Id="Package\GET ID Address.Paths[Salesforce Source Output]"
+          TopLeft="202.125,122.166666268475">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.7916661312595"
+              Start="0,0"
+              End="0,58.2916661312595">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.2916661312595" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\GET ID Address.Paths[Default Output]"
+          TopLeft="204.75,229.958332399734">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.541666211974"
+              Start="0,0"
+              End="0,42.041666211974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.041666211974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

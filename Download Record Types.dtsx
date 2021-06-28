@@ -1,0 +1,934 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/23/2020 6:47:55 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E38666"
+  DTS:CreatorName="UOFI\scasteel"
+  DTS:DTSID="{9F4E2D9F-912C-4C0F-8F92-0279F1CF2F79}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Download Record Types"
+  DTS:PackageType="5"
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{BC466BD4-75BD-45EA-B919-B9654FAF3873}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Download RecordType from Salesforce"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3CEC0121-0BE1-400D-89EF-DA295943663C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Download RecordType from Salesforce"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Download RecordType from Salesforce\SF Record Type"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="SF Record Type"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">1</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject"></property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery">SELECT
+      BusinessProcessId
+    , CreatedById
+    , CreatedDate
+    , Description
+    , DeveloperName
+    , Id
+    , IsActive
+    , LastModifiedById
+    , LastModifiedDate
+    , Name
+    , NamespacePrefix
+    , SobjectType
+    , SystemModstamp
+  FROM RecordType</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Download RecordType from Salesforce\SF Record Type.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[BusinessProcessId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[BusinessProcessId]"
+                      length="18"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[BusinessProcessId]"
+                      name="BusinessProcessId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      length="18"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      name="CreatedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[DeveloperName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[DeveloperName]"
+                      length="80"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[DeveloperName]"
+                      name="DeveloperName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[IsActive]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[IsActive]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[IsActive]"
+                      name="IsActive"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      length="18"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      name="LastModifiedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[NamespacePrefix]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[NamespacePrefix]"
+                      length="15"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[NamespacePrefix]"
+                      name="NamespacePrefix"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[SobjectType]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[SobjectType]"
+                      length="4000"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[SobjectType]"
+                      name="SobjectType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      name="SystemModstamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[BusinessProcessId]"
+                      dataType="wstr"
+                      length="18"
+                      name="BusinessProcessId" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[DeveloperName]"
+                      dataType="wstr"
+                      length="80"
+                      name="DeveloperName" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[IsActive]"
+                      dataType="bool"
+                      name="IsActive" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[NamespacePrefix]"
+                      dataType="wstr"
+                      length="15"
+                      name="NamespacePrefix" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[SobjectType]"
+                      dataType="wstr"
+                      length="4000"
+                      name="SobjectType" />
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="SQL Salesforce Record Type"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Salesforce_Record_Type</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+                <property
+                  dataType="System.String"
+                  name="Command"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[BusinessProcessId]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="BusinessProcessId"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[BusinessProcessId]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[BusinessProcessId]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[CreatedById]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="CreatedById"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[CreatedById]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Description]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[DeveloperName]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="DeveloperName"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[DeveloperName]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[DeveloperName]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Id]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[IsActive]"
+                      cachedDataType="bool"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[IsActive]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[IsActive]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[LastModifiedById]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="LastModifiedById"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[LastModifiedById]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[LastModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModifiedDate"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[LastModifiedDate]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Name]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[NamespacePrefix]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="NamespacePrefix"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[NamespacePrefix]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[NamespacePrefix]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[SobjectType]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="SobjectType"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[SobjectType]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[SobjectType]" />
+                    <inputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].Columns[SystemModstamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SystemModstamp"
+                      externalMetadataColumnId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output].Columns[SystemModstamp]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[BusinessProcessId]"
+                      dataType="wstr"
+                      length="18"
+                      name="BusinessProcessId">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[DeveloperName]"
+                      dataType="wstr"
+                      length="80"
+                      name="DeveloperName">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Download_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Download_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[IsActive]"
+                      dataType="bool"
+                      name="IsActive">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[NamespacePrefix]"
+                      dataType="wstr"
+                      length="15"
+                      name="NamespacePrefix">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[SobjectType]"
+                      dataType="wstr"
+                      length="4000"
+                      name="SobjectType">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Download RecordType from Salesforce.Paths[Salesforce Source Output]"
+              endId="Package\Download RecordType from Salesforce\SQL Salesforce Record Type.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\Download RecordType from Salesforce\SF Record Type.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\truncate Salesforce_Record_Type"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ced7f82d-3d16-4c9b-a542-9cb0e9905f8d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="truncate Salesforce_Record_Type"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Salesforce_Record_Type" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{736740F2-6F57-466F-B8C5-620DDC2C3F60}"
+      DTS:From="Package\truncate Salesforce_Record_Type"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Download RecordType from Salesforce" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="262,42"
+          Id="Package\Download RecordType from Salesforce"
+          TopLeft="91,107.541666276546" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\truncate Salesforce_Record_Type"
+          TopLeft="107.5,29.1666671724783" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="224.25,71.1666671724783">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36.3749991040677"
+              Start="0,0"
+              End="0,28.8749991040677">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.8749991040677" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Download RecordType from Salesforce">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Download RecordType from Salesforce\SQL Salesforce Record Type"
+          TopLeft="345,179" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Download RecordType from Salesforce\SF Record Type"
+          TopLeft="377,61" />
+        <EdgeLayout
+          Id="Package\Download RecordType from Salesforce.Paths[Salesforce Source Output]"
+          TopLeft="453.5,103">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,3180 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2020 9:25:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E54614"
+  DTS:CreatorName="UOFI\nhadi"
+  DTS:DTSID="{A3333A03-66F3-4D54-BDB5-79D42818148F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Delete Student Hold"
+  DTS:PackageType="5"
+  DTS:VersionBuild="52"
+  DTS:VersionGUID="{87AA03AD-7F92-41A4-9527-109AFA43C0AB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear Delete Logs for Student_Hold__c"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A0E9F960-8A54-41E1-B92A-39F76B8D2C3A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear Delete Logs for Student_Hold__c"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[Delete_Logs]&#xA;WHERE [Object_SF_Name] = 'Student_Hold__c' and [Current_Delete]=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DELETE records in Student_Hold__c object"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B824359B-5A7E-458C-8266-0BF5AECC4E93}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE records in Student_Hold__c object"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[AccountID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[ErrorMessage]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="ErrorMessage"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Key_1"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_SF_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Key_1_SF_Name"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[RecordTypeID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="RecordTypeID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Results]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Types]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Types"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].Columns[Current_Delete_New]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete_New"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[AccountID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="AccountID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[ErrorMessage]"
+                      cachedCodepage="1252"
+                      cachedDataType="text"
+                      cachedName="ErrorMessage"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Key_1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Key_1"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Key_1_SF_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Key_1_SF_Name"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[RecordTypeID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="RecordTypeID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Results]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Types]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Types"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Types]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]" />
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Current_Delete_New]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete_New"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Read data from an ADO.NET connection."
+              name="Premium ADO NET Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DataSource">&lt;&lt;Custom Command&gt;&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="Command">SELECT [AccountID]
+      ,[Create_Datetime]
+      ,[Current_Delete]
+      ,[Delete_LogID]
+      ,[ErrorMessage]
+      ,[Key_1]
+      ,[Key_1_Name]
+      ,[Key_1_SF_Name]
+      ,[Object_SF_Name]
+      ,[RecordTypeID]
+      ,[Results]
+      ,[SalesforceID]
+      ,[Types]
+FROM [dbo].[Delete_Logs]
+where object_sf_name='Student_Hold__c' and Current_Delete=1</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="PrepareCommand">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetSourceComponent</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output]"
+                  name="Default Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[AccountID]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[AccountID]"
+                      name="AccountID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      name="Create_Datetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      name="Current_Delete"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      name="Delete_LogID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[ErrorMessage]"
+                      name="ErrorMessage"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1]"
+                      name="Key_1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_Name]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_Name]"
+                      name="Key_1_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_SF_Name]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Key_1_SF_Name]"
+                      name="Key_1_SF_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[RecordTypeID]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]"
+                      name="RecordTypeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Results]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      name="SalesforceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Types]"
+                      length="100"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[Types]"
+                      name="Types"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="30"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Success Student_Hold__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Success Student_Hold__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Success"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Success"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="29"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Failed Student_Hold__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Failed Student_Hold__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"failed"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"failed"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Populate data into Salesforce."
+              name="Salesforce Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to Salesforce."
+                  expressionType="Notify"
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationActionType">4</property>
+                <property
+                  dataType="System.String"
+                  description="Destination object to write data."
+                  expressionType="Notify"
+                  name="DestinationObject">Student_Hold__c</property>
+                <property
+                  dataType="System.Int32"
+                  description="Batch size"
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the External ID field to be used for Salesforce upsert action."
+                  expressionType="Notify"
+                  name="UpsertExternalIdField"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether you wan to use Salesforce Bulk API to load data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bulk data format to use when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="BulkDataFormat"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.BulkDataFormat">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Concurrency mode when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="ConcurrencyMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.ConcurrencyMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to Salesforce."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When true, datetime values should be sent to Salesforce in UTC format. The default is false, in which case, datetime values will be posted to Salesforce in local system time. "
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to send empty strings as NULLs when writing to Salesforce. When disabled, empty strings will not be converted to NULL value, therefore will not be posted to Salesforce. This can be helpful in the case that you want to retain original values in Salesforce when the incoming value is empty (not NULL though). "
+                  expressionType="Notify"
+                  name="SendEmptyStringsAsNullValues">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to write batch files withUTF-8 encoding when using Bulk API to write to Salesforce."
+                  expressionType="Notify"
+                  name="WriteBatchFilesWithUtf8Encoding">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input].Columns[SalesforceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">Student_Hold__c</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      name="SalesforceRecordId" />
+                    <outputColumn
+                      refId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DELETE records in Student_Hold__c object.Paths[Default Output]"
+              endId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE records in Student_Hold__c object.Paths[Default Output1]"
+              endId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Inputs[Input]"
+              name="Default Output"
+              startId="Package\DELETE records in Student_Hold__c object\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE records in Student_Hold__c object.Paths[Default Output2]"
+              endId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE records in Student_Hold__c object.Paths[Default Output3]"
+              endId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE records in Student_Hold__c object.Paths[Default Output4]"
+              endId="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE records in Student_Hold__c object.Paths[Error Output]"
+              endId="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1.Inputs[Primary Input]"
+              name="Error Output"
+              startId="Package\DELETE records in Student_Hold__c object\Salesforce Destination.Outputs[Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F7545DE4-D04E-4CC0-B219-70CD56F9D332}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET EXT_Student_Hold_ID keys from SF Student_Hold__c object"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Get ID from SF Student_Hold__c"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output].Columns[Object_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Student_Hold__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Student_Hold__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output].Columns[Key_1_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="19"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output].Columns[Key_1_Name]"
+                      name="Key_1_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"EXT_Student_Hold_ID"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"EXT_Student_Hold_ID"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="Salesforce Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">Student_Hold__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Application_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Application_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Application_Hold__c]"
+                      name="Application_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[AR_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[AR_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[AR_Hold__c]"
+                      name="AR_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Compliance_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Compliance_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Compliance_Hold__c]"
+                      name="Compliance_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      length="18"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      name="CreatedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_Verification_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_Verification_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_Verification_Hold__c]"
+                      name="Enrollment_Verification_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Student_Hold_ID__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Student_Hold_ID__c]"
+                      length="50"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Student_Hold_ID__c]"
+                      name="EXT_Student_Hold_ID__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Grade_Report_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Grade_Report_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Grade_Report_Hold__c]"
+                      name="Grade_Report_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Graduation_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Graduation_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Graduation_Hold__c]"
+                      name="Graduation_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_End_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_End_Date__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_End_Date__c]"
+                      name="Hold_End_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_List__c]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_List__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_List__c]"
+                      name="Hold_List__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Origin__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Origin__c]"
+                      length="50"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Origin__c]"
+                      name="Hold_Origin__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Reason__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Reason__c]"
+                      length="50"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Reason__c]"
+                      name="Hold_Reason__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Release__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Release__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Release__c]"
+                      name="Hold_Release__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Start_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Start_Date__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Start_Date__c]"
+                      name="Hold_Start_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Type__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Type__c]"
+                      length="50"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Hold_Type__c]"
+                      name="Hold_Type__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      length="18"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      name="LastModifiedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Registration_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Registration_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Registration_Hold__c]"
+                      name="Registration_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Student__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student__c]"
+                      length="18"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Student__c]"
+                      name="Student__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      name="SystemModstamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Transcript_Hold__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Transcript_Hold__c]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Transcript_Hold__c]"
+                      name="Transcript_Hold__c"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Application_Hold__c]"
+                      dataType="bool"
+                      name="Application_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[AR_Hold__c]"
+                      dataType="bool"
+                      name="AR_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Compliance_Hold__c]"
+                      dataType="bool"
+                      name="Compliance_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_Verification_Hold__c]"
+                      dataType="bool"
+                      name="Enrollment_Verification_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Student_Hold_ID__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="EXT_Student_Hold_ID__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Grade_Report_Hold__c]"
+                      dataType="bool"
+                      name="Grade_Report_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Graduation_Hold__c]"
+                      dataType="bool"
+                      name="Graduation_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_End_Date__c]"
+                      dataType="dbDate"
+                      name="Hold_End_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_List__c]"
+                      dataType="nText"
+                      name="Hold_List__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Origin__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Hold_Origin__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Reason__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Hold_Reason__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Release__c]"
+                      dataType="bool"
+                      name="Hold_Release__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Start_Date__c]"
+                      dataType="dbDate"
+                      name="Hold_Start_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Hold_Type__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Hold_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Registration_Hold__c]"
+                      dataType="bool"
+                      name="Registration_Hold__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Student__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Transcript_Hold__c]"
+                      dataType="bool"
+                      name="Transcript_Hold__c" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Save the ID into Delete Logs"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object.Paths[Default Output]"
+              endId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Outputs[Default Output]" />
+            <path
+              refId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object.Paths[Salesforce Source Output]"
+              endId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{02F32507-DF10-4FA9-B8F4-30F5F46FCBC8}"
+      DTS:From="Package\Clear Delete Logs for Student_Hold__c"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A76FD6D4-9519-4D28-BF43-A164F0E9A0F3}"
+      DTS:From="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DELETE records in Student_Hold__c object" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="283,42"
+          Id="Package\DELETE records in Student_Hold__c object"
+          TopLeft="143.5,239.583332649949" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\Clear Delete Logs for Student_Hold__c"
+          TopLeft="115,49.8333330858084" />
+        <NodeLayout
+          Size="388,42"
+          Id="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object"
+          TopLeft="58.5,138.458333658882" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="249,91.8333330858084">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.6250005730736"
+              Start="0,0"
+              End="0,39.1250005730736">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.1250005730736" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="252.5,180.458333658882">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32.5,59.124998991067"
+              Start="0,0"
+              End="32.5,51.624998991067">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5624994955335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5624994955335"
+                    Point2="0,29.5624994955335"
+                    Point3="4,29.5624994955335" />
+                  <mssgle:LineSegment
+                    End="28.5,29.5624994955335" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28.5,29.5624994955335"
+                    Point2="32.5,29.5624994955335"
+                    Point3="32.5,33.5624994955335" />
+                  <mssgle:LineSegment
+                    End="32.5,51.624998991067" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DELETE records in Student_Hold__c object">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination 1"
+          TopLeft="146.666666666667,540.666666666667" />
+        <NodeLayout
+          Size="216.5,42"
+          Id="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1 1"
+          TopLeft="146.666666666667,448" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DELETE records in Student_Hold__c object\Premium Derived Column"
+          TopLeft="294,237.333333333333" />
+        <NodeLayout
+          Size="206.5,42"
+          Id="Package\DELETE records in Student_Hold__c object\Premium ADO NET Source"
+          TopLeft="295.076923076923,130.153846153846" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\DELETE records in Student_Hold__c object\Premium Derived Column 1"
+          TopLeft="512.666666666667,452.666666666667" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE records in Student_Hold__c object\Premium ADO NET Destination"
+          TopLeft="502.666666666667,544" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DELETE records in Student_Hold__c object\Salesforce Destination"
+          TopLeft="298.666666666667,344.666666666667" />
+        <EdgeLayout
+          Id="Package\DELETE records in Student_Hold__c object.Paths[Default Output4]"
+          TopLeft="257.291666666667,490">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.6666666666666"
+              Start="0,0"
+              End="0,43.1666666666666">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.1666666666666" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE records in Student_Hold__c object.Paths[Default Output3]"
+          TopLeft="616.166666666667,494.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.333333333333"
+              Start="0,0"
+              End="0,41.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE records in Student_Hold__c object.Paths[Default Output2]"
+          TopLeft="420,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.666666666667,66"
+              Start="0,0"
+              End="196.666666666667,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7413793103448"
+                    Point2="0,26.7413793103448"
+                    Point3="4,26.7413793103448" />
+                  <mssgle:LineSegment
+                    End="192.666666666667,26.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.666666666667,26.7413793103448"
+                    Point2="196.666666666667,26.7413793103448"
+                    Point3="196.666666666667,30.7413793103448" />
+                  <mssgle:LineSegment
+                    End="196.666666666667,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE records in Student_Hold__c object.Paths[Default Output1]"
+          TopLeft="392.083333333333,279.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.333333333334"
+              Start="0,0"
+              End="0,57.833333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.833333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE records in Student_Hold__c object.Paths[Default Output]"
+          TopLeft="395.913461538461,172.153846153846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.179487179487"
+              Start="0,0"
+              End="0,57.679487179487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.679487179487" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE records in Student_Hold__c object.Paths[Error Output]"
+          TopLeft="361.333333333334,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.416666666667,61.333333333333"
+              Start="0,0"
+              End="-106.416666666667,53.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8505747126435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8505747126435"
+                    Point2="0,24.8505747126435"
+                    Point3="-4,24.8505747126435" />
+                  <mssgle:LineSegment
+                    End="-102.416666666667,24.8505747126435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.416666666667,24.8505747126435"
+                    Point2="-106.416666666667,24.8505747126435"
+                    Point3="-106.416666666667,28.8505747126435" />
+                  <mssgle:LineSegment
+                    End="-106.416666666667,53.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-81.5447200520834,29.8505747126435,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232.5,42"
+          Id="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Get ID from SF Student_Hold__c"
+          TopLeft="91,185.249999079853" />
+        <NodeLayout
+          Size="164.5,42"
+          Id="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Salesforce Source"
+          TopLeft="120.5,80.1666662684745" />
+        <NodeLayout
+          Size="212,42"
+          Id="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object\Save the ID into Delete Logs"
+          TopLeft="95,279.499998611708" />
+        <EdgeLayout
+          Id="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object.Paths[Salesforce Source Output]"
+          TopLeft="205,122.166666268475">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,63.0833328113786"
+              Start="0,0"
+              End="0,55.5833328113786">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5833328113786" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\GET EXT_Student_Hold_ID keys from SF Student_Hold__c object.Paths[Default Output]"
+          TopLeft="204.125,227.249999079853">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.2499995318549"
+              Start="0,0"
+              End="0,44.7499995318549">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.7499995318549" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

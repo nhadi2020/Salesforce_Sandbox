@@ -1,0 +1,1174 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/25/2020 2:34:12 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E54614"
+  DTS:CreatorName="UOFI\nhadi"
+  DTS:DTSID="{A0F434AD-DF14-4170-B6C5-CD25EA3FDAEE}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Download Affiliation"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{D853003C-3A92-447B-8BE1-162DB0213FFA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D9D0632D-C773-49F0-9411-E147655829C5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="DELETE FROM dbo.Salesforce_Affiliation" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET Affiliation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DFB5B56F-AD98-4956-9E16-6008558C2B71}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET Affiliation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GET Affiliation\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Salesforce_Affiliation</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET Affiliation\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[CreatedById]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="CreatedById"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Account__c]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="hed__Account__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Account__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Account__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Affiliation_Type__c]"
+                      cachedDataType="wstr"
+                      cachedLength="1300"
+                      cachedName="hed__Affiliation_Type__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Affiliation_Type__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Contact__c]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="hed__Contact__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Contact__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Description__c]"
+                      cachedDataType="nText"
+                      cachedName="hed__Description__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Description__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Description__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__EndDate__c]"
+                      cachedDataType="dbDate"
+                      cachedName="hed__EndDate__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__EndDate__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__EndDate__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Primary__c]"
+                      cachedDataType="bool"
+                      cachedName="hed__Primary__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Primary__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Primary__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Role__c]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="hed__Role__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Role__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Role__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__StartDate__c]"
+                      cachedDataType="dbDate"
+                      cachedName="hed__StartDate__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__StartDate__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__StartDate__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[hed__Status__c]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="hed__Status__c"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Status__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Status__c]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Id]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[LastModifiedById]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="LastModifiedById"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[LastModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModifiedDate"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[LastReferencedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastReferencedDate"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastReferencedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[LastViewedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastViewedDate"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastViewedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Name]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[OwnerId]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="OwnerId"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[OwnerId]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]" />
+                    <inputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[SystemModstamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SystemModstamp"
+                      externalMetadataColumnId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Affiliation_Type__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="hed__Affiliation_Type__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Contact__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Description__c]"
+                      dataType="nText"
+                      name="hed__Description__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">false</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__EndDate__c]"
+                      dataType="date"
+                      name="hed__EndDate__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Primary__c]"
+                      dataType="bool"
+                      name="hed__Primary__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Role__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Role__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__StartDate__c]"
+                      dataType="date"
+                      name="hed__StartDate__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Status__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Status__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET Affiliation\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET Affiliation\Salesforce Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="Salesforce Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">hed__Affiliation__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET Affiliation\Salesforce Source.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      length="18"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      name="CreatedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Account__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      length="18"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Account__c]"
+                      name="hed__Account__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation_Type__c]"
+                      length="1300"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]"
+                      name="hed__Affiliation_Type__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      length="18"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]"
+                      name="hed__Contact__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Description__c]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Description__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Description__c]"
+                      name="hed__Description__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__EndDate__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__EndDate__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__EndDate__c]"
+                      name="hed__EndDate__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Primary__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Primary__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Primary__c]"
+                      name="hed__Primary__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Role__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Role__c]"
+                      length="4000"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Role__c]"
+                      name="hed__Role__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__StartDate__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__StartDate__c]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__StartDate__c]"
+                      name="hed__StartDate__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Status__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Status__c]"
+                      length="4000"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Status__c]"
+                      name="hed__Status__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      length="18"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      name="LastModifiedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      name="LastReferencedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      name="LastViewedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      length="18"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]"
+                      name="OwnerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      name="SystemModstamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation_Type__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="hed__Affiliation_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Contact__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Description__c]"
+                      dataType="nText"
+                      name="hed__Description__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__EndDate__c]"
+                      dataType="dbDate"
+                      name="hed__EndDate__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Primary__c]"
+                      dataType="bool"
+                      name="hed__Primary__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Role__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Role__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__StartDate__c]"
+                      dataType="dbDate"
+                      name="hed__StartDate__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Status__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GET Affiliation.Paths[Salesforce Source Output]"
+              endId="Package\GET Affiliation\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\GET Affiliation\Salesforce Source.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E52A5B97-4255-47F1-BAD2-97864E492378}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\GET Affiliation" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="89,62.374999685213" />
+        <NodeLayout
+          Size="146,42"
+          Id="Package\GET Affiliation"
+          TopLeft="101,156.41666618776" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="174,104.374999685213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.041666502547"
+              Start="0,0"
+              End="0,44.541666502547">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.541666502547" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\GET Affiliation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.5,42"
+          Id="Package\GET Affiliation\Salesforce Source"
+          TopLeft="133.5,79.6249996044983" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\GET Affiliation\Premium ADO NET Destination"
+          TopLeft="99.5,237.249998821566" />
+        <EdgeLayout
+          Id="Package\GET Affiliation.Paths[Salesforce Source Output]"
+          TopLeft="214.125,121.624999604498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,115.624999217068"
+              Start="0,0"
+              End="0,108.124999217068">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,108.124999217068" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

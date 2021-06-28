@@ -1,0 +1,1274 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/16/2020 10:04:38 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E38666"
+  DTS:CreatorName="UOFI\scasteel"
+  DTS:DTSID="{A21BCD0F-6B5D-438D-869D-5612F042FA88}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Download Term"
+  DTS:PackageType="5"
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{C5206DBF-25C1-4D89-A10C-469910D58350}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Download Term from SF"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{A8D7FEE1-B3DB-46FB-A4A1-CFB24BCF8983}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Download Term from SF"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Download Term from SF\Salseforce_Case"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Salseforce_Case"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Salesforce_Codes_Term</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+                <property
+                  dataType="System.String"
+                  name="Command"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Download Term from SF\Salseforce_Case.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[Academic_Year_Code__c]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Academic_Year_Code__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Academic_Year_Code__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Academic_Year_Code__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[CreatedById]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="CreatedById"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[CreatedById]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[CreatedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="CreatedDate"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[CreatedDate]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[EXT_Term_Code__c]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="EXT_Term_Code__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[EXT_Term_Code__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[EXT_Term_Code__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__Account__c]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="hed__Account__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Account__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Account__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__End_Date__c]"
+                      cachedDataType="dbDate"
+                      cachedName="hed__End_Date__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__End_Date__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__End_Date__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__Grading_Period_Sequence__c]"
+                      cachedDataType="numeric"
+                      cachedName="hed__Grading_Period_Sequence__c"
+                      cachedPrecision="18"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Grading_Period_Sequence__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Grading_Period_Sequence__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__Instructional_Days__c]"
+                      cachedDataType="numeric"
+                      cachedName="hed__Instructional_Days__c"
+                      cachedPrecision="16"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Instructional_Days__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Instructional_Days__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__Parent_Term__c]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="hed__Parent_Term__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Parent_Term__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Parent_Term__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__Start_Date__c]"
+                      cachedDataType="dbDate"
+                      cachedName="hed__Start_Date__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Start_Date__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Start_Date__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[hed__Type__c]"
+                      cachedDataType="wstr"
+                      cachedLength="4000"
+                      cachedName="hed__Type__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Type__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Type__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Id]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Id]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[IsDeleted]"
+                      cachedDataType="bool"
+                      cachedName="IsDeleted"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[IsDeleted]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[LastModifiedById]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="LastModifiedById"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastModifiedById]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[LastModifiedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModifiedDate"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastModifiedDate]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[LastReferencedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastReferencedDate"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastReferencedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastReferencedDate]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[LastViewedDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastViewedDate"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastViewedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastViewedDate]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[Name]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Name]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[SystemModstamp]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SystemModstamp"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[SystemModstamp]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[Term_Name__c]"
+                      cachedDataType="wstr"
+                      cachedLength="1300"
+                      cachedName="Term_Name__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Term_Name__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Name__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[Term_Season__c]"
+                      cachedDataType="wstr"
+                      cachedLength="1300"
+                      cachedName="Term_Season__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Term_Season__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Season__c]" />
+                    <inputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].Columns[Term_Year__c]"
+                      cachedDataType="wstr"
+                      cachedLength="1300"
+                      cachedName="Term_Year__c"
+                      externalMetadataColumnId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Term_Year__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Year__c]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Academic_Year_Code__c]"
+                      dataType="wstr"
+                      length="10"
+                      name="Academic_Year_Code__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[EXT_Term_Code__c]"
+                      dataType="wstr"
+                      length="6"
+                      name="EXT_Term_Code__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__End_Date__c]"
+                      dataType="date"
+                      name="hed__End_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Grading_Period_Sequence__c]"
+                      dataType="numeric"
+                      name="hed__Grading_Period_Sequence__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Instructional_Days__c]"
+                      dataType="numeric"
+                      name="hed__Instructional_Days__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Parent_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Parent_Term__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Start_Date__c]"
+                      dataType="date"
+                      name="hed__Start_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[hed__Type__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Type__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Term_Name__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Term_Name__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Term_Season__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Term_Season__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input].ExternalColumns[Term_Year__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Term_Year__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Download Term from SF\Salseforce_Case.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Download Term from SF\Salseforce_Case.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Download Term from SF\SF Term"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="SF Term"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">hed__Term__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Download Term from SF\SF Term.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Academic_Year_Code__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Academic_Year_Code__c]"
+                      length="10"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Academic_Year_Code__c]"
+                      name="Academic_Year_Code__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      length="18"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      name="CreatedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[EXT_Term_Code__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[EXT_Term_Code__c]"
+                      length="6"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[EXT_Term_Code__c]"
+                      name="EXT_Term_Code__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Account__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      length="18"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Account__c]"
+                      name="hed__Account__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__End_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__End_Date__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__End_Date__c]"
+                      name="hed__End_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Grading_Period_Sequence__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Grading_Period_Sequence__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Grading_Period_Sequence__c]"
+                      name="hed__Grading_Period_Sequence__c"
+                      precision="18"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Instructional_Days__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Instructional_Days__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Instructional_Days__c]"
+                      name="hed__Instructional_Days__c"
+                      precision="16"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Parent_Term__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Parent_Term__c]"
+                      length="18"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Parent_Term__c]"
+                      name="hed__Parent_Term__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Start_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Start_Date__c]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Start_Date__c]"
+                      name="hed__Start_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Type__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Type__c]"
+                      length="4000"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[hed__Type__c]"
+                      name="hed__Type__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      length="18"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      name="LastModifiedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      name="LastReferencedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      name="LastViewedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      name="SystemModstamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Name__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Term_Name__c]"
+                      length="1300"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Name__c]"
+                      name="Term_Name__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Season__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Term_Season__c]"
+                      length="1300"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Season__c]"
+                      name="Term_Season__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Year__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Term_Year__c]"
+                      length="1300"
+                      lineageId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].Columns[Term_Year__c]"
+                      name="Term_Year__c"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Academic_Year_Code__c]"
+                      dataType="wstr"
+                      length="10"
+                      name="Academic_Year_Code__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[EXT_Term_Code__c]"
+                      dataType="wstr"
+                      length="6"
+                      name="EXT_Term_Code__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__End_Date__c]"
+                      dataType="dbDate"
+                      name="hed__End_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Grading_Period_Sequence__c]"
+                      dataType="numeric"
+                      name="hed__Grading_Period_Sequence__c"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Instructional_Days__c]"
+                      dataType="numeric"
+                      name="hed__Instructional_Days__c"
+                      precision="16"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Parent_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Parent_Term__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Start_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Start_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[hed__Type__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Term_Name__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Term_Name__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Term_Season__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Term_Season__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output].ExternalColumns[Term_Year__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="Term_Year__c" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Download Term from SF.Paths[Salesforce Source Output]"
+              endId="Package\Download Term from SF\Salseforce_Case.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\Download Term from SF\SF Term.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Empty Term"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{27C46DCE-3E15-4874-B966-3D159D43371E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Empty Term"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Salesforce_Codes_Term" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E2132E87-D969-4249-ACC0-6AB27FDE1EDB}"
+      DTS:From="Package\Empty Term"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Download Term from SF" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Download Term from SF"
+          TopLeft="118,162.124999443069" />
+        <NodeLayout
+          Size="136,42"
+          Id="Package\Empty Term"
+          TopLeft="146,71.4999996448556" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="214.25,113.499999644856">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.6249997982134"
+              Start="0,0"
+              End="0,41.1249997982134">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1249997982134" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Download Term from SF">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Download Term from SF\Salseforce_Case"
+          TopLeft="223.5,261.624999539927" />
+        <NodeLayout
+          Size="119.5,42"
+          Id="Package\Download Term from SF\SF Term"
+          TopLeft="244,155.458332948594" />
+        <EdgeLayout
+          Id="Package\Download Term from SF.Paths[Salesforce Source Output]"
+          TopLeft="304.375,197.458332948594">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.166666591333"
+              Start="0,0"
+              End="0,56.666666591333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,56.666666591333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

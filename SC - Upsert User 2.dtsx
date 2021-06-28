@@ -1,0 +1,2274 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/14/2020 4:28:26 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E38666"
+  DTS:CreatorName="UOFI\scasteel"
+  DTS:DTSID="{F320A44F-D242-4F0E-B405-F212D47FB269}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Upsert User"
+  DTS:PackageType="5"
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{C32AF490-719A-444B-BED5-8C25B30CA962}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{005AA8F4-01CD-40F9-BDB9-AAE74BCDCEE8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\SF User"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Populate data into Salesforce."
+              name="SF User"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to Salesforce."
+                  expressionType="Notify"
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationActionType">5</property>
+                <property
+                  dataType="System.String"
+                  description="Destination object to write data."
+                  expressionType="Notify"
+                  name="DestinationObject">User</property>
+                <property
+                  dataType="System.Int32"
+                  description="Batch size"
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the External ID field to be used for Salesforce upsert action."
+                  expressionType="Notify"
+                  name="UpsertExternalIdField">EDW_PERS_ID__c</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether you wan to use Salesforce Bulk API to load data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bulk data format to use when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="BulkDataFormat"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.BulkDataFormat">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Concurrency mode when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="ConcurrencyMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.ConcurrencyMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to Salesforce."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When true, datetime values should be sent to Salesforce in UTC format. The default is false, in which case, datetime values will be posted to Salesforce in local system time. "
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to send empty strings as NULLs when writing to Salesforce. When disabled, empty strings will not be converted to NULL value, therefore will not be posted to Salesforce. This can be helpful in the case that you want to retain original values in Salesforce when the incoming value is empty (not NULL though). "
+                  expressionType="Notify"
+                  name="SendEmptyStringsAsNullValues">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to write batch files withUTF-8 encoding when using Bulk API to write to Salesforce."
+                  expressionType="Notify"
+                  name="WriteBatchFilesWithUtf8Encoding">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SF User.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\SF User.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[Alias]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="Alias"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Alias]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Alias]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[EmailEncodingKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="EmailEncodingKey"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EmailEncodingKey]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[EmailEncodingKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[FirstName]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[LanguageLocaleKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="LanguageLocaleKey"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[LanguageLocaleKey]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LanguageLocaleKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[LastName]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LastName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[LocaleSidKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="LocaleSidKey"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[LocaleSidKey]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LocaleSidKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[MiddleName]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="MiddleName"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[MiddleName]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[MiddleName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[ProfileId]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="ProfileId"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ProfileId]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ProfileId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[ReceivesInfoEmails]"
+                      cachedDataType="i4"
+                      cachedName="ReceivesInfoEmails"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ReceivesInfoEmails]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ReceivesInfoEmails]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[SenderEmail]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="SenderEmail"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[SenderEmail]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[SenderEmail]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[SenderName]"
+                      cachedDataType="wstr"
+                      cachedLength="121"
+                      cachedName="SenderName"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[SenderName]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[SenderName]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[TimeZoneSidKey]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="TimeZoneSidKey"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[TimeZoneSidKey]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[TimeZoneSidKey]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[Username]"
+                      cachedDataType="wstr"
+                      cachedLength="80"
+                      cachedName="Username"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Username]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Username]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[ContactId]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="ContactId"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ContactId]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ContactId]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[EDW_PERS_ID__c]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="EDW_PERS_ID__c"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EDW_PERS_ID__c]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[EDW_PERS_ID__c]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[IsActive]"
+                      cachedDataType="i4"
+                      cachedName="IsActive"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[IsActive]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[IsActive]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[CommunityNickname]"
+                      cachedDataType="wstr"
+                      cachedLength="130"
+                      cachedName="CommunityNickname"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[CommunityNickname]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[CommunityNickname]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="21"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Email]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Email]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[AboutMe]"
+                      dataType="wstr"
+                      length="1000"
+                      name="AboutMe">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Alias]"
+                      dataType="wstr"
+                      length="8"
+                      name="Alias">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[CallCenterId]"
+                      dataType="wstr"
+                      length="18"
+                      name="CallCenterId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">CallCenter</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="40"
+                      name="City">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[CommunityNickname]"
+                      dataType="wstr"
+                      length="40"
+                      name="CommunityNickname">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="80"
+                      name="CompanyName">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ContactId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ContactId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">Contact</arrayElement>
+                          </arrayElements>
+                        </property>
+                        <property
+                          dataType="System.String"
+                          name="LookupSettings"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="80"
+                      name="Country">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[DefaultGroupNotificationFrequency]"
+                      dataType="wstr"
+                      length="4000"
+                      name="DefaultGroupNotificationFrequency">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[DelegatedApproverId]"
+                      dataType="wstr"
+                      length="18"
+                      name="DelegatedApproverId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="2">
+                            <arrayElement
+                              dataType="System.String">Group</arrayElement>
+                            <arrayElement
+                              dataType="System.String">User</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Department]"
+                      dataType="wstr"
+                      length="80"
+                      name="Department">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[DigestFrequency]"
+                      dataType="wstr"
+                      length="4000"
+                      name="DigestFrequency">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Division]"
+                      dataType="wstr"
+                      length="80"
+                      name="Division">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EDW_PERS_ID__c]"
+                      dataType="wstr"
+                      length="9"
+                      name="EDW_PERS_ID__c">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Email]"
+                      dataType="wstr"
+                      length="128"
+                      name="Email">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EmailEncodingKey]"
+                      dataType="wstr"
+                      length="4000"
+                      name="EmailEncodingKey">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EmailPreferencesAutoBcc]"
+                      dataType="bool"
+                      name="EmailPreferencesAutoBcc">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EmailPreferencesAutoBccStayInTouch]"
+                      dataType="bool"
+                      name="EmailPreferencesAutoBccStayInTouch">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EmailPreferencesStayInTouchReminder]"
+                      dataType="bool"
+                      name="EmailPreferencesStayInTouchReminder">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[EmployeeNumber]"
+                      dataType="wstr"
+                      length="20"
+                      name="EmployeeNumber">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Extension]"
+                      dataType="wstr"
+                      length="40"
+                      name="Extension">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="40"
+                      name="Fax">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[FederationIdentifier]"
+                      dataType="wstr"
+                      length="512"
+                      name="FederationIdentifier">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      name="FirstName">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ForecastEnabled]"
+                      dataType="bool"
+                      name="ForecastEnabled">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[GeocodeAccuracy]"
+                      dataType="wstr"
+                      length="4000"
+                      name="GeocodeAccuracy">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">User</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[IndividualId]"
+                      dataType="wstr"
+                      length="18"
+                      name="IndividualId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">Individual</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[IsActive]"
+                      dataType="bool"
+                      name="IsActive">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[IsPortalEnabled]"
+                      dataType="bool"
+                      name="IsPortalEnabled">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[LanguageLocaleKey]"
+                      dataType="wstr"
+                      length="4000"
+                      name="LanguageLocaleKey">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="80"
+                      name="LastName">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Latitude]"
+                      dataType="numeric"
+                      name="Latitude"
+                      precision="18"
+                      scale="15">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[LocaleSidKey]"
+                      dataType="wstr"
+                      length="4000"
+                      name="LocaleSidKey">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Longitude]"
+                      dataType="numeric"
+                      name="Longitude"
+                      precision="18"
+                      scale="15">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ManagerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ManagerId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">User</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="40"
+                      name="MiddleName">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[MobilePhone]"
+                      dataType="wstr"
+                      length="40"
+                      name="MobilePhone">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="40"
+                      name="Phone">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[PortalRole]"
+                      dataType="wstr"
+                      length="4000"
+                      name="PortalRole">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="20"
+                      name="PostalCode">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ProfileId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ProfileId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">Profile</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ReceivesAdminInfoEmails]"
+                      dataType="bool"
+                      name="ReceivesAdminInfoEmails">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[ReceivesInfoEmails]"
+                      dataType="bool"
+                      name="ReceivesInfoEmails">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[SenderEmail]"
+                      dataType="wstr"
+                      length="80"
+                      name="SenderEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[SenderName]"
+                      dataType="wstr"
+                      length="80"
+                      name="SenderName">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Signature]"
+                      dataType="wstr"
+                      length="1333"
+                      name="Signature">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[State]"
+                      dataType="wstr"
+                      length="80"
+                      name="State">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[StayInTouchNote]"
+                      dataType="wstr"
+                      length="512"
+                      name="StayInTouchNote">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[StayInTouchSignature]"
+                      dataType="wstr"
+                      length="512"
+                      name="StayInTouchSignature">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[StayInTouchSubject]"
+                      dataType="wstr"
+                      length="80"
+                      name="StayInTouchSubject">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Street]"
+                      dataType="wstr"
+                      length="255"
+                      name="Street">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[TimeZoneSidKey]"
+                      dataType="wstr"
+                      length="4000"
+                      name="TimeZoneSidKey">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="80"
+                      name="Title">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[Username]"
+                      dataType="wstr"
+                      length="80"
+                      name="Username">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsAvantgoUser]"
+                      dataType="bool"
+                      name="UserPermissionsAvantgoUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsCallCenterAutoLogin]"
+                      dataType="bool"
+                      name="UserPermissionsCallCenterAutoLogin">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsInteractionUser]"
+                      dataType="bool"
+                      name="UserPermissionsInteractionUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsKnowledgeUser]"
+                      dataType="bool"
+                      name="UserPermissionsKnowledgeUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsMarketingUser]"
+                      dataType="bool"
+                      name="UserPermissionsMarketingUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsOfflineUser]"
+                      dataType="bool"
+                      name="UserPermissionsOfflineUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsSFContentUser]"
+                      dataType="bool"
+                      name="UserPermissionsSFContentUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPermissionsSupportUser]"
+                      dataType="bool"
+                      name="UserPermissionsSupportUser">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesActivityRemindersPopup]"
+                      dataType="bool"
+                      name="UserPreferencesActivityRemindersPopup">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesApexPagesDeveloperMode]"
+                      dataType="bool"
+                      name="UserPreferencesApexPagesDeveloperMode">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesCacheDiagnostics]"
+                      dataType="bool"
+                      name="UserPreferencesCacheDiagnostics">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesCreateLEXAppsWTShown]"
+                      dataType="bool"
+                      name="UserPreferencesCreateLEXAppsWTShown">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableAllFeedsEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableAllFeedsEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableBookmarkEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableBookmarkEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableChangeCommentEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableChangeCommentEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableEndorsementEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableEndorsementEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableFileShareNotificationsForApi]"
+                      dataType="bool"
+                      name="UserPreferencesDisableFileShareNotificationsForApi">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableFollowersEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableFollowersEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableLaterCommentEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableLaterCommentEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableLikeEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableLikeEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableMentionsPostEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableMentionsPostEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableMessageEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableMessageEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableProfilePostEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableProfilePostEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisableSharePostEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisableSharePostEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisCommentAfterLikeEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisCommentAfterLikeEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisMentionsCommentEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisMentionsCommentEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesDisProfPostCommentEmail]"
+                      dataType="bool"
+                      name="UserPreferencesDisProfPostCommentEmail">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesEnableAutoSubForFeeds]"
+                      dataType="bool"
+                      name="UserPreferencesEnableAutoSubForFeeds">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesEventRemindersCheckboxDefault]"
+                      dataType="bool"
+                      name="UserPreferencesEventRemindersCheckboxDefault">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesExcludeMailAppAttachments]"
+                      dataType="bool"
+                      name="UserPreferencesExcludeMailAppAttachments">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesFavoritesShowTopFavorites]"
+                      dataType="bool"
+                      name="UserPreferencesFavoritesShowTopFavorites">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesFavoritesWTShown]"
+                      dataType="bool"
+                      name="UserPreferencesFavoritesWTShown">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesGlobalNavBarWTShown]"
+                      dataType="bool"
+                      name="UserPreferencesGlobalNavBarWTShown">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesGlobalNavGridMenuWTShown]"
+                      dataType="bool"
+                      name="UserPreferencesGlobalNavGridMenuWTShown">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHasCelebrationBadge]"
+                      dataType="bool"
+                      name="UserPreferencesHasCelebrationBadge">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideBiggerPhotoCallout]"
+                      dataType="bool"
+                      name="UserPreferencesHideBiggerPhotoCallout">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideChatterOnboardingSplash]"
+                      dataType="bool"
+                      name="UserPreferencesHideChatterOnboardingSplash">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideCSNDesktopTask]"
+                      dataType="bool"
+                      name="UserPreferencesHideCSNDesktopTask">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideCSNGetChatterMobileTask]"
+                      dataType="bool"
+                      name="UserPreferencesHideCSNGetChatterMobileTask">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideEndUserOnboardingAssistantModal]"
+                      dataType="bool"
+                      name="UserPreferencesHideEndUserOnboardingAssistantModal">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideLightningMigrationModal]"
+                      dataType="bool"
+                      name="UserPreferencesHideLightningMigrationModal">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideS1BrowserUI]"
+                      dataType="bool"
+                      name="UserPreferencesHideS1BrowserUI">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideSecondChatterOnboardingSplash]"
+                      dataType="bool"
+                      name="UserPreferencesHideSecondChatterOnboardingSplash">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesHideSfxWelcomeMat]"
+                      dataType="bool"
+                      name="UserPreferencesHideSfxWelcomeMat">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesLightningExperiencePreferred]"
+                      dataType="bool"
+                      name="UserPreferencesLightningExperiencePreferred">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesNativeEmailClient]"
+                      dataType="bool"
+                      name="UserPreferencesNativeEmailClient">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesNewLightningReportRunPageEnabled]"
+                      dataType="bool"
+                      name="UserPreferencesNewLightningReportRunPageEnabled">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesPathAssistantCollapsed]"
+                      dataType="bool"
+                      name="UserPreferencesPathAssistantCollapsed">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesPipelineViewHideHelpPopover]"
+                      dataType="bool"
+                      name="UserPreferencesPipelineViewHideHelpPopover">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesPreviewCustomTheme]"
+                      dataType="bool"
+                      name="UserPreferencesPreviewCustomTheme">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesPreviewLightning]"
+                      dataType="bool"
+                      name="UserPreferencesPreviewLightning">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesReceiveNoNotificationsAsApprover]"
+                      dataType="bool"
+                      name="UserPreferencesReceiveNoNotificationsAsApprover">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesReceiveNotificationsAsDelegatedApprover]"
+                      dataType="bool"
+                      name="UserPreferencesReceiveNotificationsAsDelegatedApprover">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesRecordHomeReservedWTShown]"
+                      dataType="bool"
+                      name="UserPreferencesRecordHomeReservedWTShown">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesRecordHomeSectionCollapseWTShown]"
+                      dataType="bool"
+                      name="UserPreferencesRecordHomeSectionCollapseWTShown">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesReminderSoundOff]"
+                      dataType="bool"
+                      name="UserPreferencesReminderSoundOff">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowCityToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowCityToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowCityToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowCityToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowCountryToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowCountryToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowCountryToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowCountryToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowEmailToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowEmailToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowEmailToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowEmailToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowFaxToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowFaxToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowFaxToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowFaxToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowManagerToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowManagerToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowManagerToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowManagerToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowMobilePhoneToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowMobilePhoneToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowMobilePhoneToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowMobilePhoneToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowPostalCodeToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowPostalCodeToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowPostalCodeToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowPostalCodeToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowProfilePicToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowProfilePicToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowStateToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowStateToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowStateToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowStateToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowStreetAddressToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowStreetAddressToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowStreetAddressToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowStreetAddressToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowTitleToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowTitleToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowTitleToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowTitleToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowWorkPhoneToExternalUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowWorkPhoneToExternalUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesShowWorkPhoneToGuestUsers]"
+                      dataType="bool"
+                      name="UserPreferencesShowWorkPhoneToGuestUsers">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesSortFeedByComment]"
+                      dataType="bool"
+                      name="UserPreferencesSortFeedByComment">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesSRHOverrideActivities]"
+                      dataType="bool"
+                      name="UserPreferencesSRHOverrideActivities">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesSuppressEventSFXReminders]"
+                      dataType="bool"
+                      name="UserPreferencesSuppressEventSFXReminders">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesSuppressTaskSFXReminders]"
+                      dataType="bool"
+                      name="UserPreferencesSuppressTaskSFXReminders">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesTaskRemindersCheckboxDefault]"
+                      dataType="bool"
+                      name="UserPreferencesTaskRemindersCheckboxDefault">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserPreferencesUserDebugModePref]"
+                      dataType="bool"
+                      name="UserPreferencesUserDebugModePref">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          name="LookupTypes" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SF User.Inputs[Input].ExternalColumns[UserRoleId]"
+                      dataType="wstr"
+                      length="18"
+                      name="UserRoleId">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">UserRole</arrayElement>
+                          </arrayElements>
+                        </property>
+                        <property
+                          dataType="System.String"
+                          name="LookupSettings"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SF User.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Data Flow Task\SF User.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SF User.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SF User.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SF User.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SF User.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SF User.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Data Flow Task\SF User.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\SF User.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Data Flow Task\SF User.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SF User.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\Data Flow Task\SF User.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      name="SalesforceRecordId" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SF User.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\Data Flow Task\SF User.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SQL Student User"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Read data from an ADO.NET connection."
+              name="SQL Student User"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DataSource">&lt;&lt;Custom Command&gt;&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="Command">SELECT top 1
+      1 as IsActive
+--    ,'' as [Address]
+      ,NETID__c as Alias
+      ,FirstName + ' ' + LastName + ' Nickname' as CommunityNickname
+--      ,'0030v00000T961YAAR' as ContactId
+      ,s.[Id] as ContactId
+      ,EDW_PERS_ID__c
+--      ,[hed__UniversityEmail__c] as Email
+      ,'scasteel@illinois.edu' as Email
+      ,'ISO-8859-1' as EmailEncodingKey
+      ,FirstName
+      ,'en_US' as LanguageLocaleKey
+      ,LastName
+      ,'en_US' as LocaleSidKey
+      ,MiddleName
+--    ,[MobilePhone]
+--    ,[Phone]
+      ,p.Id as ProfileId
+      ,0 as ReceivesInfoEmails
+--      ,[hed__UniversityEmail__c] as SenderEmail
+      ,'scasteel@illinois.edu' as SenderEmail
+      ,s.[Name] as SenderName
+      ,'America/Chicago' as TimeZoneSidKey
+      ,[hed__UniversityEmail__c] as Username
+FROM (SELECT *, 'Gies Online Advisee' as ProfileName
+        FROM [dbo].[Salesforce_Student]) s
+inner join Salesforce_Record_Type r
+    on s.RecordTypeId = r.Id
+        and r.[Name] = 'Student'
+inner join Salesforce_Profile p
+    on p.[Name] = s.ProfileName
+where s.EDW_PERS_ID__c = '21514'
+order by LastName
+</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="PrepareCommand">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetSourceComponent</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SQL Student User.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output]"
+                  name="Default Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Alias]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[Alias]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Alias]"
+                      name="Alias"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[CommunityNickname]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[CommunityNickname]"
+                      length="130"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[CommunityNickname]"
+                      name="CommunityNickname"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ContactId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[ContactId]"
+                      length="18"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ContactId]"
+                      name="ContactId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[EDW_PERS_ID__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[EDW_PERS_ID__c]"
+                      length="9"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[EDW_PERS_ID__c]"
+                      name="EDW_PERS_ID__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[Email]"
+                      length="21"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[EmailEncodingKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[EmailEncodingKey]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[EmailEncodingKey]"
+                      name="EmailEncodingKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[FirstName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[IsActive]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[IsActive]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[IsActive]"
+                      name="IsActive"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LanguageLocaleKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[LanguageLocaleKey]"
+                      length="5"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LanguageLocaleKey]"
+                      name="LanguageLocaleKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[LastName]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LocaleSidKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[LocaleSidKey]"
+                      length="5"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[LocaleSidKey]"
+                      name="LocaleSidKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[MiddleName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[MiddleName]"
+                      length="40"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[MiddleName]"
+                      name="MiddleName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ProfileId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[ProfileId]"
+                      length="18"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ProfileId]"
+                      name="ProfileId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ReceivesInfoEmails]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[ReceivesInfoEmails]"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[ReceivesInfoEmails]"
+                      name="ReceivesInfoEmails"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[SenderEmail]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[SenderEmail]"
+                      length="21"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[SenderEmail]"
+                      name="SenderEmail"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[SenderName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[SenderName]"
+                      length="121"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[SenderName]"
+                      name="SenderName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[TimeZoneSidKey]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[TimeZoneSidKey]"
+                      length="15"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[TimeZoneSidKey]"
+                      name="TimeZoneSidKey"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Username]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[Username]"
+                      length="80"
+                      lineageId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].Columns[Username]"
+                      name="Username"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[Alias]"
+                      dataType="wstr"
+                      length="50"
+                      name="Alias" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[CommunityNickname]"
+                      dataType="wstr"
+                      length="130"
+                      name="CommunityNickname" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[ContactId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ContactId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[EDW_PERS_ID__c]"
+                      dataType="wstr"
+                      length="9"
+                      name="EDW_PERS_ID__c" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[EmailEncodingKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="EmailEncodingKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="40"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[IsActive]"
+                      dataType="i4"
+                      name="IsActive" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[LanguageLocaleKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="LanguageLocaleKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="80"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[LocaleSidKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="5"
+                      name="LocaleSidKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[MiddleName]"
+                      dataType="wstr"
+                      length="40"
+                      name="MiddleName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[ProfileId]"
+                      dataType="wstr"
+                      length="18"
+                      name="ProfileId" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[ReceivesInfoEmails]"
+                      dataType="i4"
+                      name="ReceivesInfoEmails" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[SenderEmail]"
+                      codePage="1252"
+                      dataType="str"
+                      length="21"
+                      name="SenderEmail" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[SenderName]"
+                      dataType="wstr"
+                      length="121"
+                      name="SenderName" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[TimeZoneSidKey]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="TimeZoneSidKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SQL Student User.Outputs[Default Output].ExternalColumns[Username]"
+                      dataType="wstr"
+                      length="80"
+                      name="Username" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Default Output]"
+              endId="Package\Data Flow Task\SF User.Inputs[Input]"
+              name="Default Output"
+              startId="Package\Data Flow Task\SQL Student User.Outputs[Default Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Data Flow Task"
+          TopLeft="91,59" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,42"
+          Id="Package\Data Flow Task\SQL Student User"
+          TopLeft="252,63" />
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Data Flow Task\SF User"
+          TopLeft="273,149" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Default Output]"
+          TopLeft="334.25,105">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,44"
+              Start="0,0"
+              End="0,36.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

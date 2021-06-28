@@ -1,0 +1,2860 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2020 9:25:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E54614"
+  DTS:CreatorName="UOFI\nhadi"
+  DTS:DTSID="{ECE1A067-84EC-476F-BA45-9F13E045BC20}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{CB2735D3-B62E-439F-8A94-6DFE3E1853D0}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Program Enrollment"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F41D2C49-7296-4EFA-A6C1-291A23F83756}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Program Enrollment"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DELETE Program Enrollment\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[Current_Delete]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[Results]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Current_Delete]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[ErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="ErrorMessage"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Results]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Program Enrollment\Premium ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Read data from an ADO.NET connection."
+              name="Premium ADO NET Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DataSource">&lt;&lt;Custom Command&gt;&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="Command">SELECT [Create_Datetime]
+      ,[Current_Delete]
+      ,[Delete_LogID]
+      ,[Object_SF_Name]
+      ,[SalesforceID]
+FROM [dbo].[Delete_Logs]
+where object_sf_name='hed__Program_Enrollment__c' and Current_Delete=1</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="PrepareCommand">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetSourceComponent</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output]"
+                  name="Default Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      name="Create_Datetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      name="Current_Delete"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      name="Delete_LogID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      length="100"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      length="100"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      name="SalesforceID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Program Enrollment\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium Derived Column.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Program Enrollment\Premium Derived Column 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="41"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Success hed__Program_Enrollment__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Success hed__Program_Enrollment__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Success"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Success"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="40"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Failed hed__Program_Enrollment__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Failed hed__Program_Enrollment__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"failed"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"failed"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Program Enrollment\Salesforce Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Populate data into Salesforce."
+              name="Salesforce Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to Salesforce."
+                  expressionType="Notify"
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationActionType">4</property>
+                <property
+                  dataType="System.String"
+                  description="Destination object to write data."
+                  expressionType="Notify"
+                  name="DestinationObject">hed__Program_Enrollment__c</property>
+                <property
+                  dataType="System.Int32"
+                  description="Batch size"
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the External ID field to be used for Salesforce upsert action."
+                  expressionType="Notify"
+                  name="UpsertExternalIdField"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether you wan to use Salesforce Bulk API to load data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bulk data format to use when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="BulkDataFormat"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.BulkDataFormat">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Concurrency mode when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="ConcurrencyMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.ConcurrencyMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to Salesforce."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When true, datetime values should be sent to Salesforce in UTC format. The default is false, in which case, datetime values will be posted to Salesforce in local system time. "
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to send empty strings as NULLs when writing to Salesforce. When disabled, empty strings will not be converted to NULL value, therefore will not be posted to Salesforce. This can be helpful in the case that you want to retain original values in Salesforce when the incoming value is empty (not NULL though). "
+                  expressionType="Notify"
+                  name="SendEmptyStringsAsNullValues">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to write batch files withUTF-8 encoding when using Bulk API to write to Salesforce."
+                  expressionType="Notify"
+                  name="WriteBatchFilesWithUtf8Encoding">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Program Enrollment\Salesforce Destination.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input].Columns[SalesforceID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      lineageId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">hed__Program_Enrollment__c</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      name="SalesforceRecordId" />
+                    <outputColumn
+                      refId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DELETE Program Enrollment.Paths[Default Output]"
+              endId="Package\DELETE Program Enrollment\Premium Derived Column.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Program Enrollment\Premium ADO NET Source.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Program Enrollment.Paths[Default Output1]"
+              endId="Package\DELETE Program Enrollment\Salesforce Destination.Inputs[Input]"
+              name="Default Output"
+              startId="Package\DELETE Program Enrollment\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Program Enrollment.Paths[Default Output2]"
+              endId="Package\DELETE Program Enrollment\Premium Derived Column 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Program Enrollment.Paths[Default Output3]"
+              endId="Package\DELETE Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Program Enrollment\Premium Derived Column 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Program Enrollment.Paths[Default Output4]"
+              endId="Package\DELETE Program Enrollment\Premium ADO NET Destination 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Program Enrollment.Paths[Error Output]"
+              endId="Package\DELETE Program Enrollment\Premium Derived Column 1 1.Inputs[Primary Input]"
+              name="Error Output"
+              startId="Package\DELETE Program Enrollment\Salesforce Destination.Outputs[Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A77C2F37-EC5F-47B3-B08E-4F352B4FD9AD}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[Delete_Logs]&#xA;WHERE [Object_SF_Name] = 'hed__Program_Enrollment__c' and [Current_Delete]=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET ID Program Enrollment"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9B30C298-7A59-4A11-9651-50EA06322798}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET ID Program Enrollment"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GET ID Program Enrollment\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="26"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET ID Program Enrollment\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\GET ID Program Enrollment\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET ID Program Enrollment\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET ID Program Enrollment\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="26"
+                      lineageId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"hed__Program_Enrollment__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"hed__Program_Enrollment__c"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET ID Program Enrollment\Salesforce Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="Salesforce Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">hed__Program_Enrollment__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET ID Program Enrollment\Salesforce Source.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Program_Enrollment_ID__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Program_Enrollment_ID__c]"
+                      length="50"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Program_Enrollment_ID__c]"
+                      name="EXT_Program_Enrollment_ID__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Academic_Standing__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Academic_Standing__c]"
+                      length="50"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Academic_Standing__c]"
+                      name="Academic_Standing__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_Indicator__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_Indicator__c]"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_Indicator__c]"
+                      name="Active_Indicator__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_First_Term__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_First_Term__c]"
+                      length="18"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_First_Term__c]"
+                      name="Enrollment_First_Term__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_Latest_Term__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_Latest_Term__c]"
+                      length="18"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_Latest_Term__c]"
+                      name="Enrollment_Latest_Term__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_GPA__c]"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_GPA__c]"
+                      name="Level_Institutional_GPA__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_Hours__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_Hours__c]"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_Hours__c]"
+                      name="Level_Institutional_Hours__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_GPA__c]"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_GPA__c]"
+                      name="Program_GPA__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_Hours__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_Hours__c]"
+                      lineageId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_Hours__c]"
+                      name="Program_Hours__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Program_Enrollment_ID__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="EXT_Program_Enrollment_ID__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Admission_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Admission_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Affiliation__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Application_Submitted_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Application_Submitted_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Class_Standing__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Class_Standing__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Contact__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Credits_Attempted__c]"
+                      dataType="numeric"
+                      name="hed__Credits_Attempted__c"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Credits_Earned__c]"
+                      dataType="numeric"
+                      name="hed__Credits_Earned__c"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Eligible_to_Enroll__c]"
+                      dataType="bool"
+                      name="hed__Eligible_to_Enroll__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__End_Date__c]"
+                      dataType="dbDate"
+                      name="hed__End_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Enrollment_Status__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Enrollment_Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__GPA__c]"
+                      dataType="numeric"
+                      name="hed__GPA__c"
+                      precision="4"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Graduation_Year__c]"
+                      dataType="wstr"
+                      length="250"
+                      name="hed__Graduation_Year__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Program_Plan__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Program_Plan__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Start_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Start_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Institutional_Term_GPA__c]"
+                      dataType="numeric"
+                      name="Institutional_Term_GPA__c"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Institutional_Term_GPA_Hour__c]"
+                      dataType="numeric"
+                      name="Institutional_Term_GPA_Hour__c"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_GPA__c]"
+                      dataType="numeric"
+                      name="Level_GPA__c"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_GPA_Hour__c]"
+                      dataType="numeric"
+                      name="Level_GPA_Hour__c"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Residency_Group__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="Residency_Group__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student_Level__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="Student_Level__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student_Type__c]"
+                      dataType="wstr"
+                      length="100"
+                      name="Student_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Academic_Standing__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Academic_Standing__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_Indicator__c]"
+                      dataType="bool"
+                      name="Active_Indicator__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_First_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Enrollment_First_Term__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_Latest_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Enrollment_Latest_Term__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_GPA__c]"
+                      dataType="numeric"
+                      name="Level_Institutional_GPA__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_Hours__c]"
+                      dataType="numeric"
+                      name="Level_Institutional_Hours__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_GPA__c]"
+                      dataType="numeric"
+                      name="Program_GPA__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_Hours__c]"
+                      dataType="numeric"
+                      name="Program_Hours__c"
+                      precision="3" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GET ID Program Enrollment.Paths[Default Output]"
+              endId="Package\GET ID Program Enrollment\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\GET ID Program Enrollment\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\GET ID Program Enrollment.Paths[Salesforce Source Output]"
+              endId="Package\GET ID Program Enrollment\Premium Derived Column.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\GET ID Program Enrollment\Salesforce Source.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{57A777B1-9DEF-406C-95A0-F7009E322A90}"
+      DTS:From="Package\GET ID Program Enrollment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DELETE Program Enrollment" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D0A3DB36-C490-46CF-9013-7CBCF79E6686}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\GET ID Program Enrollment" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="216,42"
+          Id="Package\DELETE Program Enrollment"
+          TopLeft="130,277.958331980018" />
+        <NodeLayout
+          Size="166.5,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="163.5,54.7083330615941" />
+        <NodeLayout
+          Size="210,42"
+          Id="Package\GET ID Program Enrollment"
+          TopLeft="136.5,161.416665864901" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="239.75,203.416665864901">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.5416661151162"
+              Start="0,0"
+              End="0,67.0416661151162">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.0416661151162" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="244.125,96.7083330615941">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,64.7083328033069"
+              Start="0,0"
+              End="0,57.2083328033069">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.2083328033069" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DELETE Program Enrollment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DELETE Program Enrollment\Premium Derived Column"
+          TopLeft="294,237.333333333333" />
+        <NodeLayout
+          Size="206.5,42"
+          Id="Package\DELETE Program Enrollment\Premium ADO NET Source"
+          TopLeft="295.076923076923,130.153846153846" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DELETE Program Enrollment\Salesforce Destination"
+          TopLeft="298.666666666667,344.666666666667" />
+        <NodeLayout
+          Size="234.5,42"
+          Id="Package\DELETE Program Enrollment\Premium ADO NET Destination 1"
+          TopLeft="137.666666666667,541.666666666667" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\DELETE Program Enrollment\Premium Derived Column 1"
+          TopLeft="512.666666666667,452.666666666667" />
+        <NodeLayout
+          Size="216.5,42"
+          Id="Package\DELETE Program Enrollment\Premium Derived Column 1 1"
+          TopLeft="146.666666666667,448" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE Program Enrollment\Premium ADO NET Destination"
+          TopLeft="502.666666666667,544" />
+        <EdgeLayout
+          Id="Package\DELETE Program Enrollment.Paths[Default Output1]"
+          TopLeft="392.083333333333,279.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.3333333333334"
+              Start="0,0"
+              End="0,57.8333333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.8333333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Program Enrollment.Paths[Default Output]"
+          TopLeft="395.913461538462,172.153846153846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.1794871794872"
+              Start="0,0"
+              End="0,57.6794871794872">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.6794871794872" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Program Enrollment.Paths[Error Output]"
+          TopLeft="361.333333333333,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.416666666667,61.3333333333333"
+              Start="0,0"
+              End="-106.416666666667,53.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8505747126437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8505747126437"
+                    Point2="0,24.8505747126437"
+                    Point3="-4,24.8505747126437" />
+                  <mssgle:LineSegment
+                    End="-102.416666666667,24.8505747126437" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.416666666667,24.8505747126437"
+                    Point2="-106.416666666667,24.8505747126437"
+                    Point3="-106.416666666667,28.8505747126437" />
+                  <mssgle:LineSegment
+                    End="-106.416666666667,53.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-81.5447200520835,29.8505747126437,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Program Enrollment.Paths[Default Output4]"
+          TopLeft="254.916666666667,490">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,51.666666666667"
+              Start="0,0"
+              End="0,44.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Program Enrollment.Paths[Default Output3]"
+          TopLeft="616.166666666667,494.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.333333333333"
+              Start="0,0"
+              End="0,41.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Program Enrollment.Paths[Default Output2]"
+          TopLeft="420,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.666666666667,65.9999999999999"
+              Start="0,0"
+              End="196.666666666667,58.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7413793103448"
+                    Point2="0,26.7413793103448"
+                    Point3="4,26.7413793103448" />
+                  <mssgle:LineSegment
+                    End="192.666666666667,26.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.666666666667,26.7413793103448"
+                    Point2="196.666666666667,26.7413793103448"
+                    Point3="196.666666666667,30.7413793103448" />
+                  <mssgle:LineSegment
+                    End="196.666666666667,58.4999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\GET ID Program Enrollment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="199,42"
+          Id="Package\GET ID Program Enrollment\Premium Derived Column"
+          TopLeft="104.5,175.499999128282" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\GET ID Program Enrollment\Premium ADO NET Destination"
+          TopLeft="95,279.499998611708" />
+        <NodeLayout
+          Size="164.5,42"
+          Id="Package\GET ID Program Enrollment\Salesforce Source"
+          TopLeft="112.5,79.6249996044983" />
+        <EdgeLayout
+          Id="Package\GET ID Program Enrollment.Paths[Salesforce Source Output]"
+          TopLeft="194.75,121.624999604498">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="9.25,53.8749995237837"
+              Start="0,0"
+              End="9.25,46.3749995237837">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9374997618919" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.9374997618919"
+                    Point2="0,26.9374997618919"
+                    Point3="4,26.9374997618919" />
+                  <mssgle:LineSegment
+                    End="5.25,26.9374997618919" />
+                  <mssgle:CubicBezierSegment
+                    Point1="5.25,26.9374997618919"
+                    Point2="9.25,26.9374997618919"
+                    Point3="9.25,30.9374997618919" />
+                  <mssgle:LineSegment
+                    End="9.25,46.3749995237837" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\GET ID Program Enrollment.Paths[Default Output]"
+          TopLeft="206,217.499999128282">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,61.9999994834264"
+              Start="0,0"
+              End="0,54.4999994834264">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.4999994834264" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

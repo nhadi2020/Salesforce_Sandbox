@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="SMTP Connection Manager"
+  DTS:DTSID="{AFE313A4-9F03-479E-8309-91F5C80533C8}"
+  DTS:CreationName="SMTP (KingswaySoft)">
+  <DTS:ObjectData>
+    <ConnectionManager
+      ConnectionString="Username=uofi\business-dbsvc-NS;EnableSsl=False;SmtpServer=outbound-relays.techservices.illinois.edu;SmtpServerPort=25;ServiceTimeout=120"
+      ConnectByProxy="False">
+      <Password
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA/WFe2lrgW0C1NaUeeVj20QAAAAACAAAAAAADZgAAwAAAABAAAABWRQ8krbRuEFQ3kawx2UArAAAAAASAAACgAAAAEAAAAJXZPU6LImKhZ7oj0ydtkglYAAAAlq6bidBHun87oqeZ+PY/gl2BQ5XLZDSTDVv09KWq96HgrFJqcL2vYqcw4KLQ70qoMEhFA0wSyFGLKQ7HDDqFIMmHcttFuJhJvAILbLWkUUTyeLTsaQpHNBQAAAC+Cai/m2ch4/1pge+KtKnTdS5GrA==</Password>
+    </ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

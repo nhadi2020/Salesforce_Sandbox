@@ -1,0 +1,14 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="busdbugrad2.salesforce_sandbox.SF_Package"
+  DTS:DTSID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+  DTS:CreationName="ADO.NET:System.Data.OleDb.OleDbConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=busdbugrad2;User ID=SF_Package;Initial Catalog=Salesforce_Sandbox;Provider=SQLNCLI11.1;Persist Security Info=True;">
+      <DTS:Password
+        DTS:Name="Password"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAuQRXYiqhOUC1fsM4LX5iWgAAAAACAAAAAAADZgAAwAAAABAAAADKBKnpGyUEu1FOAK/jUQFSAAAAAASAAACgAAAAEAAAAJ+ls3oasrEwHpjw7eJjsw2AAAAALCj34sJvswciCwD02CP4tvnHm2erVhahqAAjIdO6Z3tA5fv9W0Iie5u/zE5H5s7AvmizUKA9WRmSzfG/wgIaIlgdnQVlnRYExq7qA8mLtEKAn+M8tvu3RrJAU38PabcUmeMmFCV+e+8l+W/jYEVFLhq7sWCdebtv+bHkkWe2bscUAAAAZqj3mrO32NwgGYIJtM3NfEzahCg=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Salesforce Connection Manager"
+  DTS:DTSID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}"
+  DTS:CreationName="Salesforce (KingswaySoft)">
+  <DTS:ObjectData>
+    <SalesforceConnectionManager
+      ConnectionString="InstanceType=Sandbox;AuthenticationType=AuthorizationCode;ServiceEndpoint=SOAP;ServiceUrl=https://test.salesforce.com/services/Soap/u/48.0;RedirectUri=;UserName=itpadminsf@illinois.edu.int2;ServiceTimeout=120;ProxyMode=NoProxy;ProxyServer=;ProxyServerPort=0;ProxyUsername=;RetryOnIntermittentErrors=True"
+      ConnectByProxy="False">
+      <Password
+        Sensitive="1" xmlns="www.microsoft.com/SqlServer/Dts">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAuQRXYiqhOUC1fsM4LX5iWgAAAAACAAAAAAADZgAAwAAAABAAAABIrkDqAmGpymNwpZg9Rhx4AAAAAASAAACgAAAAEAAAAP8lIzktEaXSmwqNk4Q/pWFYAAAA3BWJMPKLkxdY3bPfkCNmqszcIDr2KRLSTRsH2aSkdlQkAUeiLfBN2J7FXdx85en9MquQahOUj3voi/MizRhKe1sepz7cQElV3fDae17yvyLfgIHC98qPYBQAAAA3cJf7t9JIpdpiz5QC6TWklHZtAQ==</Password>
+    </SalesforceConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

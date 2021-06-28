@@ -1,0 +1,2798 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="9/18/2020 9:25:32 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E54614"
+  DTS:CreatorName="UOFI\nhadi"
+  DTS:DTSID="{CB01F2C3-F389-417C-AB97-E3E6704D91EF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{5FB48629-49CA-4759-B866-24057AEBB493}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DELETE Affiliation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{EEAAF976-F988-439D-9589-C9F8BE2F2BED}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DELETE Affiliation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DELETE Affiliation\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Current_Delete]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Results]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Affiliation\Premium ADO NET Destination 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">2</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Create_Datetime]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Create_Datetime"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Current_Delete]"
+                      cachedDataType="i4"
+                      cachedName="Current_Delete"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[ErrorMessage]"
+                      cachedDataType="wstr"
+                      cachedLength="2048"
+                      cachedName="ErrorMessage"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      lineageId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[Results]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Results"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]" />
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].Columns[SalesforceID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Affiliation\Premium ADO NET Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Read data from an ADO.NET connection."
+              name="Premium ADO NET Source"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DataSource">&lt;&lt;Custom Command&gt;&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="Command">SELECT [Create_Datetime]
+      ,[Current_Delete]
+      ,[Delete_LogID]
+      ,[Object_SF_Name]
+      ,[SalesforceID]
+      ,RecordTypeID
+FROM [dbo].[Delete_Logs]
+WHERE Create_Datetime &gt; '1/1/2050'
+--WHERE object_sf_name='hed__Affiliation__c' and Current_Delete=1 and RecordTypeID='Academic Program'</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="PrepareCommand">true</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetSourceComponent</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Affiliation\Premium ADO NET Source.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output]"
+                  name="Default Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Create_Datetime]"
+                      name="Create_Datetime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Current_Delete]"
+                      name="Current_Delete"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Delete_LogID]"
+                      name="Delete_LogID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      length="100"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      length="100"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]"
+                      name="SalesforceID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[RecordTypeID]"
+                      length="100"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[RecordTypeID]"
+                      name="RecordTypeID"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[Object_SF_Name]"
+                      dataType="wstr"
+                      length="100"
+                      name="Object_SF_Name" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[SalesforceID]"
+                      dataType="wstr"
+                      length="100"
+                      name="SalesforceID" />
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].ExternalColumns[RecordTypeID]"
+                      dataType="wstr"
+                      length="100"
+                      name="RecordTypeID" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Affiliation\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Affiliation\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium Derived Column.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Affiliation\Premium Derived Column 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Affiliation\Premium Derived Column 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium Derived Column 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="34"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Success hed__Affiliation__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Success hed__Affiliation__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Success"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Success"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Affiliation\Premium Derived Column 1 1"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column 1 1"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Affiliation\Premium Derived Column 1 1.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="33"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Activity]"
+                      name="Activity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Delete Failed hed__Affiliation__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"Delete Failed hed__Affiliation__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Current_Delete_New]"
+                      name="Current_Delete_New"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">0</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output].Columns[Results]"
+                      name="Results"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"failed"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"failed"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DELETE Affiliation\Salesforce Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Populate data into Salesforce."
+              name="Salesforce Destination"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how data is written to Salesforce."
+                  expressionType="Notify"
+                  name="ActionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationActionType">4</property>
+                <property
+                  dataType="System.String"
+                  description="Destination object to write data."
+                  expressionType="Notify"
+                  name="DestinationObject">hed__Affiliation__c</property>
+                <property
+                  dataType="System.Int32"
+                  description="Batch size"
+                  expressionType="Notify"
+                  name="BatchSize">200</property>
+                <property
+                  dataType="System.String"
+                  description="Specify the External ID field to be used for Salesforce upsert action."
+                  expressionType="Notify"
+                  name="UpsertExternalIdField"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether you wan to use Salesforce Bulk API to load data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Bulk data format to use when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="BulkDataFormat"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.BulkDataFormat">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Concurrency mode when Salesforce Bulk API is used."
+                  expressionType="Notify"
+                  name="ConcurrencyMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.ConcurrencyMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to remove those invalid characters before writing to Salesforce."
+                  expressionType="Notify"
+                  name="RemoveInvalidCharacters">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When true, datetime values should be sent to Salesforce in UTC format. The default is false, in which case, datetime values will be posted to Salesforce in local system time. "
+                  expressionType="Notify"
+                  name="SendDateTimeInUtcFormat">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to ignore those NULL-valued fields."
+                  expressionType="Notify"
+                  name="IgnoreNullValuedFields">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to send empty strings as NULLs when writing to Salesforce. When disabled, empty strings will not be converted to NULL value, therefore will not be posted to Salesforce. This can be helpful in the case that you want to retain original values in Salesforce when the incoming value is empty (not NULL though). "
+                  expressionType="Notify"
+                  name="SendEmptyStringsAsNullValues">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to write batch files withUTF-8 encoding when using Bulk API to write to Salesforce."
+                  expressionType="Notify"
+                  name="WriteBatchFilesWithUtf8Encoding">false</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DELETE Affiliation\Salesforce Destination.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input].Columns[SalesforceID]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="SalesforceID"
+                      externalMetadataColumnId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      lineageId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output].Columns[SalesforceID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          isArray="true"
+                          name="LookupTypes">
+                          <arrayElements
+                            arrayElementCount="1">
+                            <arrayElement
+                              dataType="System.String">hed__Affiliation__c</arrayElement>
+                          </arrayElements>
+                        </property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      dataType="wstr"
+                      length="18"
+                      lineageId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Default Output].Columns[SalesforceRecordId]"
+                      name="SalesforceRecordId" />
+                    <outputColumn
+                      refId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      dataType="bool"
+                      lineageId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Default Output].Columns[IsNew]"
+                      name="IsNew" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DELETE Affiliation.Paths[Default Output]"
+              endId="Package\DELETE Affiliation\Premium Derived Column.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Affiliation\Premium ADO NET Source.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Affiliation.Paths[Default Output1]"
+              endId="Package\DELETE Affiliation\Salesforce Destination.Inputs[Input]"
+              name="Default Output"
+              startId="Package\DELETE Affiliation\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Affiliation.Paths[Default Output2]"
+              endId="Package\DELETE Affiliation\Premium Derived Column 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Affiliation.Paths[Default Output3]"
+              endId="Package\DELETE Affiliation\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Affiliation\Premium Derived Column 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Affiliation.Paths[Default Output4]"
+              endId="Package\DELETE Affiliation\Premium ADO NET Destination 1.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\DELETE Affiliation\Premium Derived Column 1 1.Outputs[Default Output]" />
+            <path
+              refId="Package\DELETE Affiliation.Paths[Error Output]"
+              endId="Package\DELETE Affiliation\Premium Derived Column 1 1.Inputs[Primary Input]"
+              name="Error Output"
+              startId="Package\DELETE Affiliation\Salesforce Destination.Outputs[Error Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{6A4F791E-BD22-48BA-A32A-5D722BBD43D1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[Delete_Logs]&#xA;where [Object_SF_Name] = 'hed__Affiliation__c' and [Current_Delete]=1" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\GET ID Affiliation"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{34F82980-25F7-45FA-9399-4735FD64DEA2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="GET ID Affiliation"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\GET ID Affiliation\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Delete_Logs</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET ID Affiliation\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Key_1"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1]" />
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Key_1_Name"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1_Name]" />
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Key_1_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Key_1_SF_Name"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1_SF_Name]" />
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Object_SF_Name]"
+                      cachedDataType="wstr"
+                      cachedLength="19"
+                      cachedName="Object_SF_Name"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]" />
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[RecordTypeID]"
+                      cachedDataType="wstr"
+                      cachedLength="1300"
+                      cachedName="RecordTypeID"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[RecordTypeID]" />
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].Columns[Id]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="Id"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      lineageId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[AccountID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="AccountID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Create_Datetime]"
+                      dataType="dbTimeStamp"
+                      name="Create_Datetime">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Current_Delete]"
+                      dataType="i4"
+                      name="Current_Delete">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Delete_LogID]"
+                      dataType="i4"
+                      name="Delete_LogID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[ErrorMessage]"
+                      codePage="1252"
+                      dataType="text"
+                      name="ErrorMessage">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Key_1_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Key_1_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Object_SF_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Object_SF_Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[RecordTypeID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="RecordTypeID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Results]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Results">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SalesforceID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="SalesforceID">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Types]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Types">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET ID Affiliation\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET ID Affiliation\Premium Derived Column"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Update column values using expressions"
+              name="Premium Derived Column"
+              usesDispositions="true">
+              <properties>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumDerivedColumnComponent</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\GET ID Affiliation\Premium Derived Column.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Inputs[Primary Input].Columns[hed__Contact__c]"
+                      cachedDataType="wstr"
+                      cachedLength="18"
+                      cachedName="hed__Contact__c"
+                      lineageId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]" />
+                    <inputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Inputs[Primary Input].Columns[hed__Affiliation_Type__c]"
+                      cachedDataType="wstr"
+                      cachedLength="1300"
+                      cachedName="hed__Affiliation_Type__c"
+                      lineageId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\GET ID Affiliation\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\GET ID Affiliation\Premium Derived Column.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="19"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Object_SF_Name]"
+                      name="Object_SF_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"hed__Affiliation__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"hed__Affiliation__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="18"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1]"
+                      name="Key_1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">[hed__Contact__c]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1_Name]"
+                      name="Key_1_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"EDW_PERS_ID"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"EDW_PERS_ID"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1_SF_Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[Key_1_SF_Name]"
+                      name="Key_1_SF_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"hed__Contact__c"</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">"hed__Contact__c"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[RecordTypeID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="1300"
+                      lineageId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output].Columns[RecordTypeID]"
+                      name="RecordTypeID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">#{Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          name="FriendlyExpression">[hed__Affiliation_Type__c]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\GET ID Affiliation\Salesforce Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="Salesforce Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">hed__Affiliation__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\GET ID Affiliation\Salesforce Source.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation_Type__c]"
+                      length="1300"
+                      lineageId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation_Type__c]"
+                      name="hed__Affiliation_Type__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      length="18"
+                      lineageId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]"
+                      name="hed__Contact__c"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation_Type__c]"
+                      dataType="wstr"
+                      length="1300"
+                      name="hed__Affiliation_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Contact__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Description__c]"
+                      dataType="nText"
+                      name="hed__Description__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__EndDate__c]"
+                      dataType="dbDate"
+                      name="hed__EndDate__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Primary__c]"
+                      dataType="bool"
+                      name="hed__Primary__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Role__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Role__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__StartDate__c]"
+                      dataType="dbDate"
+                      name="hed__StartDate__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Status__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\GET ID Affiliation.Paths[Default Output]"
+              endId="Package\GET ID Affiliation\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Default Output"
+              startId="Package\GET ID Affiliation\Premium Derived Column.Outputs[Default Output]" />
+            <path
+              refId="Package\GET ID Affiliation.Paths[Salesforce Source Output]"
+              endId="Package\GET ID Affiliation\Premium Derived Column.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\GET ID Affiliation\Salesforce Source.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{03534378-90A1-472F-A4B0-AA94D2AE5DC0}"
+      DTS:From="Package\GET ID Affiliation"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DELETE Affiliation" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{B92DA462-B172-4FB1-889C-CCA6EC6FCC66}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\GET ID Affiliation" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165.5,42"
+          Id="Package\DELETE Affiliation"
+          TopLeft="140,365.708331544159" />
+        <NodeLayout
+          Size="166.5,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="137,121.87499939464" />
+        <NodeLayout
+          Size="159.5,42"
+          Id="Package\GET ID Affiliation"
+          TopLeft="137.5,232.916665509757" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="220,274.916665509757">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,90.7916660344021"
+              Start="0,0"
+              End="0,83.2916660344021">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,83.2916660344021" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="218.75,163.87499939464">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,69.0416661151167"
+              Start="0,0"
+              End="0,61.5416661151167">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5416661151167" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DELETE Affiliation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="206.5,42"
+          Id="Package\DELETE Affiliation\Premium ADO NET Source"
+          TopLeft="295.076923076923,130.153846153846" />
+        <NodeLayout
+          Size="208,42"
+          Id="Package\DELETE Affiliation\Premium Derived Column 1"
+          TopLeft="512.666666666667,452.666666666667" />
+        <NodeLayout
+          Size="234.5,42"
+          Id="Package\DELETE Affiliation\Premium ADO NET Destination 1"
+          TopLeft="142.166666666667,540.666666666667" />
+        <NodeLayout
+          Size="184,42"
+          Id="Package\DELETE Affiliation\Salesforce Destination"
+          TopLeft="298.666666666667,344.666666666667" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\DELETE Affiliation\Premium ADO NET Destination"
+          TopLeft="502.666666666667,544" />
+        <NodeLayout
+          Size="216.5,42"
+          Id="Package\DELETE Affiliation\Premium Derived Column 1 1"
+          TopLeft="146.666666666667,448" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\DELETE Affiliation\Premium Derived Column"
+          TopLeft="294,237.333333333333" />
+        <EdgeLayout
+          Id="Package\DELETE Affiliation.Paths[Error Output]"
+          TopLeft="361.333333333334,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.416666666667,61.333333333333"
+              Start="0,0"
+              End="-106.416666666667,53.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8505747126435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8505747126435"
+                    Point2="0,24.8505747126435"
+                    Point3="-4,24.8505747126435" />
+                  <mssgle:LineSegment
+                    End="-102.416666666667,24.8505747126435" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.416666666667,24.8505747126435"
+                    Point2="-106.416666666667,24.8505747126435"
+                    Point3="-106.416666666667,28.8505747126435" />
+                  <mssgle:LineSegment
+                    End="-106.416666666667,53.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-81.5447200520834,29.8505747126435,56.6727734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Affiliation.Paths[Default Output4]"
+          TopLeft="257.166666666667,490">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.666666666667"
+              Start="0,0"
+              End="0,43.166666666667">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.166666666667" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Affiliation.Paths[Default Output3]"
+          TopLeft="616.166666666667,494.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.333333333333"
+              Start="0,0"
+              End="0,41.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Affiliation.Paths[Default Output2]"
+          TopLeft="420,386.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="196.666666666667,66"
+              Start="0,0"
+              End="196.666666666667,58.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7413793103448"
+                    Point2="0,26.7413793103448"
+                    Point3="4,26.7413793103448" />
+                  <mssgle:LineSegment
+                    End="192.666666666667,26.7413793103448" />
+                  <mssgle:CubicBezierSegment
+                    Point1="192.666666666667,26.7413793103448"
+                    Point2="196.666666666667,26.7413793103448"
+                    Point3="196.666666666667,30.7413793103448" />
+                  <mssgle:LineSegment
+                    End="196.666666666667,58.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Affiliation.Paths[Default Output1]"
+          TopLeft="392.083333333333,279.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.333333333334"
+              Start="0,0"
+              End="0,57.833333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.833333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DELETE Affiliation.Paths[Default Output]"
+          TopLeft="395.913461538462,172.153846153846">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.1794871794872"
+              Start="0,0"
+              End="0,57.6794871794872">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.6794871794872" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\GET ID Affiliation">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.5,42"
+          Id="Package\GET ID Affiliation\Salesforce Source"
+          TopLeft="120.5,80.1666662684745" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\GET ID Affiliation\Premium ADO NET Destination"
+          TopLeft="95,279.499998611708" />
+        <NodeLayout
+          Size="199,42"
+          Id="Package\GET ID Affiliation\Premium Derived Column"
+          TopLeft="102,187.958332399734" />
+        <EdgeLayout
+          Id="Package\GET ID Affiliation.Paths[Salesforce Source Output]"
+          TopLeft="202.125,122.166666268474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65.7916661312597"
+              Start="0,0"
+              End="0,58.2916661312597">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.2916661312597" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\GET ID Affiliation.Paths[Default Output]"
+          TopLeft="204.75,229.958332399734">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,49.5416662119738"
+              Start="0,0"
+              End="0,42.0416662119738">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.0416662119738" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

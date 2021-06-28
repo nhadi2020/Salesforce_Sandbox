@@ -1,0 +1,1929 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/15/2020 9:58:57 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="BUS-P10E54614"
+  DTS:CreatorName="UOFI\nhadi"
+  DTS:DTSID="{E1BC1291-33FE-489E-8F2C-A1DA182261EC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Download Salesforce Program Enrollment"
+  DTS:PackageType="5"
+  DTS:VersionBuild="41"
+  DTS:VersionGUID="{2E64C8A4-5FA4-467B-A5DB-FB33587D3AA7}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clean Salesforce_Program_Enrollment"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{7ac2b403-409c-419a-bf06-50ca20adebe4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clean Salesforce_Program_Enrollment"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Salesforce_Program_Enrollment" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Download PE from Salesforce"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{836E32B7-DA11-4714-94BB-4AB05BAA7420}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Download PE from Salesforce"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Download PE from Salesforce\Premium ADO NET Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Insert, Update, Upsert, and Delete data over an ADO.NET connection."
+              name="Premium ADO NET Destination"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DestinationTable">dbo.Salesforce_Program_Enrollment</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="Action"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationAction">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="WriteMode"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationWriteMode">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="CommandTimeout">120</property>
+                <property
+                  dataType="System.Int32"
+                  description="BatchSize"
+                  expressionType="Notify"
+                  name="BatchSize">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how to handle duplicates in the temp table before merging. Only applies to non INSERT bulk operations."
+                  expressionType="Notify"
+                  name="DuplicateHandling"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetDestinationDuplicateHandling">0</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="FirstMatchOnly">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="When enabled, will not overwrite existing values with NULL values during update/upsert operations."
+                  expressionType="Notify"
+                  name="PreventNullOverwrites">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="TransactionType"
+                  expressionType="Notify"
+                  name="TransactionType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="TransactionIsolationLevel"
+                  typeConverter="KingswaySoft.IntegrationToolkit.ProductivityPack.PremiumAdoDotNetTransactionIsolationLevel">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.ProductivityPack.AdoDotNetDestinationComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Connections[ADO NET]"
+                  connectionManagerID="{8B18B15B-EB17-4111-94BA-2B89C97D98CF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[busdbugrad2.salesforce_sandbox.SF_Package]"
+                  description="ADO.NET"
+                  name="ADO NET" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Primary Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].Columns[EXT_Program_Enrollment_ID__c]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="EXT_Program_Enrollment_ID__c"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[EXT_Program_Enrollment_ID__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Program_Enrollment_ID__c]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Academic_Standing__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Academic_Standing__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Active_Indicator__c]"
+                      dataType="bool"
+                      name="Active_Indicator__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Enrollment_First_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Enrollment_First_Term__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Enrollment_Latest_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Enrollment_Latest_Term__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[EXT_Program_Enrollment_ID__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="EXT_Program_Enrollment_ID__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Admission_Date__c]"
+                      dataType="date"
+                      name="hed__Admission_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Affiliation__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Affiliation__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Application_Submitted_Date__c]"
+                      dataType="date"
+                      name="hed__Application_Submitted_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Class_Standing__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Class_Standing__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Contact__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Credits_Attempted__c]"
+                      dataType="numeric"
+                      name="hed__Credits_Attempted__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Credits_Earned__c]"
+                      dataType="numeric"
+                      name="hed__Credits_Earned__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Eligible_to_Enroll__c]"
+                      dataType="bool"
+                      name="hed__Eligible_to_Enroll__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__End_Date__c]"
+                      dataType="date"
+                      name="hed__End_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Enrollment_Status__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Enrollment_Status__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__GPA__c]"
+                      dataType="numeric"
+                      name="hed__GPA__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Graduation_Year__c]"
+                      dataType="wstr"
+                      length="250"
+                      name="hed__Graduation_Year__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Program_Plan__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Program_Plan__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[hed__Start_Date__c]"
+                      dataType="date"
+                      name="hed__Start_Date__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Institutional_Term_GPA__c]"
+                      dataType="numeric"
+                      name="Institutional_Term_GPA__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Institutional_Term_GPA_Hour__c]"
+                      dataType="numeric"
+                      name="Institutional_Term_GPA_Hour__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Level_GPA__c]"
+                      dataType="numeric"
+                      name="Level_GPA__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Level_GPA_Hour__c]"
+                      dataType="numeric"
+                      name="Level_GPA_Hour__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Program_GPA__c]"
+                      dataType="numeric"
+                      name="Program_GPA__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Program_Hours__c]"
+                      dataType="numeric"
+                      name="Program_Hours__c"
+                      precision="38">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Residency_Group__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="Residency_Group__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Student_Level__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="Student_Level__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[Student_Type__c]"
+                      dataType="wstr"
+                      length="100"
+                      name="Student_Type__c">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsConditionalField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="IsIdentityField"
+                          name="IsIdentityField">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          name="CanBeConditionalField">true</property>
+                        <property
+                          dataType="System.Null"
+                          name="Tags" />
+                        <property
+                          dataType="System.String"
+                          name="Lookup"></property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      dataType="wstr"
+                      length="2048"
+                      lineageId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Error Output].Columns[ErrorMessage]"
+                      name="ErrorMessage" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Download PE from Salesforce\Premium ADO NET Destination.Outputs[Default Output]"
+                  exclusionGroup="1"
+                  name="Default Output"
+                  synchronousInputId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Download PE from Salesforce\Salesforce Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="KingswaySoft Inc.; http://www.kingswaysoft.com; support@kingswaysoft.com; Copyright (c) 2020 KingswaySoft Inc."
+              description="Extract data from Salesforce."
+              name="Salesforce Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of source data from Salesforce"
+                  expressionType="Notify"
+                  name="SourceType"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceType">0</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object to retrieve data from."
+                  expressionType="Notify"
+                  name="SourceObject">hed__Program_Enrollment__c</property>
+                <property
+                  dataType="System.String"
+                  description="Salesforce object query statement."
+                  expressionType="Notify"
+                  name="ObjectQuery"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the batch size of the query."
+                  expressionType="Notify"
+                  name="BatchSize">1000</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether deleted or archived records should be returned."
+                  expressionType="Notify"
+                  name="IncludeDeletedArchived">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Specify whether to use Salesforce Bulk API to read data."
+                  expressionType="Notify"
+                  name="UseBulkApi">false</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the output timezone for Salesforce datetime values."
+                  expressionType="Notify"
+                  name="OutputTimezone"
+                  typeConverter="KingswaySoft.IntegrationToolkit.Common.DescriptiveEnumTypeConverter`1[[KingswaySoft.IntegrationToolkit.Salesforce.SfdcSourceOutputTimezone" />
+                <property
+                  dataType="System.String"
+                  description="Specify the PK Chunking Header that helps with Bulk API data read performance."
+                  expressionType="Notify"
+                  name="PKChunkingHeader"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">KingswaySoft.IntegrationToolkit.Salesforce.SalesforceSourceComponent</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Download PE from Salesforce\Salesforce Source.Connections[Salesforce]"
+                  connectionManagerID="{D8171114-111E-4B3B-A16F-F1AD65CDD212}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Salesforce Connection Manager]"
+                  description="Salesforce Connection"
+                  name="Salesforce" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output]"
+                  name="Salesforce Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Academic_Standing__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Academic_Standing__c]"
+                      length="50"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Academic_Standing__c]"
+                      name="Academic_Standing__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_Indicator__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_Indicator__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Active_Indicator__c]"
+                      name="Active_Indicator__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedById]"
+                      name="CreatedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[CreatedDate]"
+                      name="CreatedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_First_Term__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_First_Term__c]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_First_Term__c]"
+                      name="Enrollment_First_Term__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_Latest_Term__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_Latest_Term__c]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Enrollment_Latest_Term__c]"
+                      name="Enrollment_Latest_Term__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Program_Enrollment_ID__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Program_Enrollment_ID__c]"
+                      length="50"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[EXT_Program_Enrollment_ID__c]"
+                      name="EXT_Program_Enrollment_ID__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Account__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Account__c]"
+                      name="hed__Account__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Admission_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Admission_Date__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Admission_Date__c]"
+                      name="hed__Admission_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation__c]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Affiliation__c]"
+                      name="hed__Affiliation__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Application_Submitted_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Application_Submitted_Date__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Application_Submitted_Date__c]"
+                      name="hed__Application_Submitted_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Class_Standing__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Class_Standing__c]"
+                      length="4000"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Class_Standing__c]"
+                      name="hed__Class_Standing__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Contact__c]"
+                      name="hed__Contact__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Credits_Attempted__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Credits_Attempted__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Credits_Attempted__c]"
+                      name="hed__Credits_Attempted__c"
+                      precision="6"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Credits_Earned__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Credits_Earned__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Credits_Earned__c]"
+                      name="hed__Credits_Earned__c"
+                      precision="6"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Eligible_to_Enroll__c]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Eligible_to_Enroll__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Eligible_to_Enroll__c]"
+                      name="hed__Eligible_to_Enroll__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__End_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__End_Date__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__End_Date__c]"
+                      name="hed__End_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Enrollment_Status__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Enrollment_Status__c]"
+                      length="4000"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Enrollment_Status__c]"
+                      name="hed__Enrollment_Status__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__GPA__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__GPA__c]"
+                      name="hed__GPA__c"
+                      precision="4"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Graduation_Year__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Graduation_Year__c]"
+                      length="250"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Graduation_Year__c]"
+                      name="hed__Graduation_Year__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Program_Plan__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Program_Plan__c]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Program_Plan__c]"
+                      name="hed__Program_Plan__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Start_Date__c]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Start_Date__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[hed__Start_Date__c]"
+                      name="hed__Start_Date__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Id]"
+                      name="Id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Institutional_Term_GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Institutional_Term_GPA__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Institutional_Term_GPA__c]"
+                      name="Institutional_Term_GPA__c"
+                      precision="6"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Institutional_Term_GPA_Hour__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Institutional_Term_GPA_Hour__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Institutional_Term_GPA_Hour__c]"
+                      name="Institutional_Term_GPA_Hour__c"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[IsDeleted]"
+                      name="IsDeleted"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedById]"
+                      name="LastModifiedById"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastModifiedDate]"
+                      name="LastModifiedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastReferencedDate]"
+                      name="LastReferencedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[LastViewedDate]"
+                      name="LastViewedDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_GPA__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_GPA__c]"
+                      name="Level_GPA__c"
+                      precision="9"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_GPA_Hour__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_GPA_Hour__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_GPA_Hour__c]"
+                      name="Level_GPA_Hour__c"
+                      precision="9"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_GPA__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_GPA__c]"
+                      name="Level_Institutional_GPA__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_Hours__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_Hours__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Level_Institutional_Hours__c]"
+                      name="Level_Institutional_Hours__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      length="80"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      length="18"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[OwnerId]"
+                      name="OwnerId"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_GPA__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_GPA__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_GPA__c]"
+                      name="Program_GPA__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_Hours__c]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_Hours__c]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Program_Hours__c]"
+                      name="Program_Hours__c"
+                      precision="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Residency_Group__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Residency_Group__c]"
+                      length="30"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Residency_Group__c]"
+                      name="Residency_Group__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Student_Level__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student_Level__c]"
+                      length="30"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Student_Level__c]"
+                      name="Student_Level__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Student_Type__c]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student_Type__c]"
+                      length="100"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[Student_Type__c]"
+                      name="Student_Type__c"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      lineageId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].Columns[SystemModstamp]"
+                      name="SystemModstamp"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Academic_Standing__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="Academic_Standing__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Active_Indicator__c]"
+                      dataType="bool"
+                      name="Active_Indicator__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="CreatedById" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[CreatedDate]"
+                      dataType="dbTimeStamp"
+                      name="CreatedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_First_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Enrollment_First_Term__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Enrollment_Latest_Term__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="Enrollment_Latest_Term__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[EXT_Program_Enrollment_ID__c]"
+                      dataType="wstr"
+                      length="50"
+                      name="EXT_Program_Enrollment_ID__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Account__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Account__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Admission_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Admission_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Affiliation__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Affiliation__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Application_Submitted_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Application_Submitted_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Class_Standing__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Class_Standing__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Contact__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Contact__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Credits_Attempted__c]"
+                      dataType="numeric"
+                      name="hed__Credits_Attempted__c"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Credits_Earned__c]"
+                      dataType="numeric"
+                      name="hed__Credits_Earned__c"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Eligible_to_Enroll__c]"
+                      dataType="bool"
+                      name="hed__Eligible_to_Enroll__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__End_Date__c]"
+                      dataType="dbDate"
+                      name="hed__End_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Enrollment_Status__c]"
+                      dataType="wstr"
+                      length="4000"
+                      name="hed__Enrollment_Status__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__GPA__c]"
+                      dataType="numeric"
+                      name="hed__GPA__c"
+                      precision="4"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Graduation_Year__c]"
+                      dataType="wstr"
+                      length="250"
+                      name="hed__Graduation_Year__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Program_Plan__c]"
+                      dataType="wstr"
+                      length="18"
+                      name="hed__Program_Plan__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[hed__Start_Date__c]"
+                      dataType="dbDate"
+                      name="hed__Start_Date__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Id]"
+                      dataType="wstr"
+                      length="18"
+                      name="Id" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Institutional_Term_GPA__c]"
+                      dataType="numeric"
+                      name="Institutional_Term_GPA__c"
+                      precision="6"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Institutional_Term_GPA_Hour__c]"
+                      dataType="numeric"
+                      name="Institutional_Term_GPA_Hour__c"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[IsDeleted]"
+                      dataType="bool"
+                      name="IsDeleted" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedById]"
+                      dataType="wstr"
+                      length="18"
+                      name="LastModifiedById" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastModifiedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastModifiedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastReferencedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastReferencedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[LastViewedDate]"
+                      dataType="dbTimeStamp"
+                      name="LastViewedDate" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_GPA__c]"
+                      dataType="numeric"
+                      name="Level_GPA__c"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_GPA_Hour__c]"
+                      dataType="numeric"
+                      name="Level_GPA_Hour__c"
+                      precision="9"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_GPA__c]"
+                      dataType="numeric"
+                      name="Level_Institutional_GPA__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Level_Institutional_Hours__c]"
+                      dataType="numeric"
+                      name="Level_Institutional_Hours__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Name]"
+                      dataType="wstr"
+                      length="80"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[OwnerId]"
+                      dataType="wstr"
+                      length="18"
+                      name="OwnerId" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_GPA__c]"
+                      dataType="numeric"
+                      name="Program_GPA__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Program_Hours__c]"
+                      dataType="numeric"
+                      name="Program_Hours__c"
+                      precision="3" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Residency_Group__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="Residency_Group__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student_Level__c]"
+                      dataType="wstr"
+                      length="30"
+                      name="Student_Level__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[Student_Type__c]"
+                      dataType="wstr"
+                      length="100"
+                      name="Student_Type__c" />
+                    <externalMetadataColumn
+                      refId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output].ExternalColumns[SystemModstamp]"
+                      dataType="dbTimeStamp"
+                      name="SystemModstamp" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Download PE from Salesforce.Paths[Salesforce Source Output]"
+              endId="Package\Download PE from Salesforce\Premium ADO NET Destination.Inputs[Primary Input]"
+              name="Salesforce Source Output"
+              startId="Package\Download PE from Salesforce\Salesforce Source.Outputs[Salesforce Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{BA2F220B-A48F-4627-8FDA-0DB9CF6D5ADE}"
+      DTS:From="Package\Clean Salesforce_Program_Enrollment"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Download PE from Salesforce" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="219,42"
+          Id="Package\Download PE from Salesforce"
+          TopLeft="159,232.374998845781" />
+        <NodeLayout
+          Size="261,42"
+          Id="Package\Clean Salesforce_Program_Enrollment"
+          TopLeft="137,92.2500000484286" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="268,134.250000048429">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,98.1249987973521"
+              Start="0,0"
+              End="0,90.6249987973521">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.6249987973521" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Download PE from Salesforce">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="164.5,42"
+          Id="Package\Download PE from Salesforce\Salesforce Source"
+          TopLeft="533,173" />
+        <NodeLayout
+          Size="226,42"
+          Id="Package\Download PE from Salesforce\Premium ADO NET Destination"
+          TopLeft="497,400" />
+        <EdgeLayout
+          Id="Package\Download PE from Salesforce.Paths[Salesforce Source Output]"
+          TopLeft="612.625,215">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,185"
+              Start="0,0"
+              End="0,177.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,177.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
